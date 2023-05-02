@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/healthcare_navigation"
+    app:startDestination="@id/doctorsListFragment">
+
+    <fragment
+        android:id="@+id/doctorsListFragment"
+        android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.DoctorsListFragment"
+        android:label="DoctorsListFragment" >
+        <action
+            android:id="@+id/actionDoctorDetail"
+            app:destination="@id/doctorsDetailFragment" />
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorsDetailFragment"
+        android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.DoctorsDetailFragment"
+        android:label="fragment_doctor_detail" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="doctorName"
+            app:argType="string" />
+        <argument
+            android:name="doctorSpecialty"
+            app:argType="string" />
+        <argument
+            android:name="doctorAddress"
+            app:argType="string" />
+        <argument
+            android:name="doctorPhone"
+            app:argType="string" />
+        <argument
+            android:name="doctorPhotoUrl"
+            app:argType="string" />
+        <argument
+            android:name="doctorRating"
+            app:argType="string" />
+    </fragment>
+</navigation>

@@ -7,5 +7,5 @@ data class Doctor(
     val doctorAddress:String?,
     val doctorPhone:String?,
     val doctorPhotoUrl:String,
-    val doctorRating:Int?
+    val doctorRating:String?
 )

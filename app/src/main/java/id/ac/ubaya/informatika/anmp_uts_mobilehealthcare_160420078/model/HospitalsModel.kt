@@ -7,5 +7,5 @@ data class Hospital(
     val HospitalAddress:String?,
     val HospitalPhone:String?,
     val HospitalPhotoUrl:String,
-    val HospitalRating:Int?
+    val HospitalRating:String?
 )

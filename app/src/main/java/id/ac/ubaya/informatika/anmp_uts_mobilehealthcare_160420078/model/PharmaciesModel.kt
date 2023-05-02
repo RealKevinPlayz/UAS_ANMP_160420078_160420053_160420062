@@ -9,5 +9,5 @@ data class Pharmacy(
     val pharmacyAddress:String?,
     val pharmacyPhone:String?,
     val pharmacyPhotoUrl:String,
-    val pharmacyRating:Int?
+    val pharmacyRating:String?
 )
