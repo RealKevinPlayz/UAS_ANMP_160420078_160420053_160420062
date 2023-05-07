@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itemDoctor"
+        android:icon="@drawable/ic_baseline_doctor"
+        android:title="Doctor"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/itemHospital"
+        android:icon="@drawable/ic_baseline_local_hospital_24"
+        android:title="Hospital"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/itemMedicine"
+        android:icon="@drawable/ic_baseline_medication_24"
+        android:title="Medicine"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/itemPharmacy"
+        android:icon="@drawable/ic_baseline_local_pharmacy_24"
+        android:title="Pharmacy"
+        app:showAsAction="always" />
+</menu>

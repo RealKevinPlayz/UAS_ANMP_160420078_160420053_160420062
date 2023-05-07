@@ -2,10 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/healthcare_navigation"
-    app:startDestination="@id/doctorsListFragment">
+    app:startDestination="@id/itemDoctor">
 
     <fragment
-        android:id="@+id/doctorsListFragment"
+        android:id="@+id/itemDoctor"
         android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.DoctorsListFragment"
         android:label="DoctorsListFragment" >
         <action
@@ -38,4 +38,16 @@
             android:name="doctorRating"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/itemHospital"
+        android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.HospitalListFragment"
+        android:label="HospitalListFragment" >
+        <action
+            android:id="@+id/action_itemHospital_to_hospitalDetailFragment"
+            app:destination="@id/hospitalDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hospitalDetailFragment"
+        android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.HospitalDetailFragment"
+        android:label="HospitalDetailFragment" />
 </navigation>
