@@ -35,7 +35,7 @@ class DoctorListAdapter(val doctorList:ArrayList<Doctor>)
         holder.view.txtDoctorsListName.text = doctorList[position].doctorName
         holder.view.txtDoctorsSpecialty.text = doctorList[position].doctorSpecialty
         holder.view.txtDoctorsListRating.text = doctorList[position].doctorRating
-        holder.view.btnDetail.setOnClickListener {
+        holder.view.btnDoctorDetail.setOnClickListener {
             val doctorId = doctorList[position].id.toString()
             val doctorName = doctorList[position].doctorName.toString()
             val doctorSpecialty = doctorList[position].doctorSpecialty.toString()

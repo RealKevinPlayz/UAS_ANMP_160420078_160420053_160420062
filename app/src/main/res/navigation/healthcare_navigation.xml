@@ -11,9 +11,6 @@
         <action
             android:id="@+id/actionDoctorDetail"
             app:destination="@id/doctorsDetailFragment" />
-        <argument
-            android:name="id"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/doctorsDetailFragment"
