@@ -48,7 +48,7 @@ class DoctorListAdapter(val doctorList:ArrayList<Doctor>)
             Navigation.findNavController(it).navigate(action)
         }
     }
-    fun updateStudentList(newDoctorList: ArrayList<Doctor>) {
+    fun updateDoctorList(newDoctorList: ArrayList<Doctor>) {
         doctorList.clear()
         doctorList.addAll(newDoctorList)
         notifyDataSetChanged()

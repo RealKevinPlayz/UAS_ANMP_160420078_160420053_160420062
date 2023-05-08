@@ -5,30 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.squareup.picasso.Picasso
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.R
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.viewmodel.HospitalDetailViewModel
+import kotlinx.android.synthetic.main.fragment_hospital_detail.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HospitalDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HospitalDetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var viewModel: HospitalDetailViewModel
+    var hospitalId = ""
+    var hospitalName = ""
+    var hospitalWebsite = ""
+    var hospitalAddress = ""
+    var hospitalPhone = ""
+    var hospitalPhotoUrl = ""
+    var hospitalRating = ""
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,23 +31,33 @@ class HospitalDetailFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_hospital_detail, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HospitalDetailFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HospitalDetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if(arguments != null) {
+            hospitalId = HospitalDetailFragmentArgs.fromBundle(requireArguments()).id
+            hospitalName = HospitalDetailFragmentArgs.fromBundle(requireArguments()).hospitalName
+            hospitalWebsite = HospitalDetailFragmentArgs.fromBundle(requireArguments()).hospitalWebsite
+            hospitalAddress = HospitalDetailFragmentArgs.fromBundle(requireArguments()).hospitalAddress
+            hospitalPhone = HospitalDetailFragmentArgs.fromBundle(requireArguments()).hospitalPhone
+            hospitalPhotoUrl = HospitalDetailFragmentArgs.fromBundle(requireArguments()).hospitalPhotoUrl
+            hospitalRating = HospitalDetailFragmentArgs.fromBundle(requireArguments()).hospitalRating
+        }
+        viewModel = ViewModelProvider(this).get(HospitalDetailViewModel::class.java)
+        viewModel.fetch(hospitalId, hospitalName, hospitalWebsite, hospitalAddress, hospitalPhone, hospitalPhotoUrl, hospitalRating)
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
+        viewModel.hospitalLD.observe(viewLifecycleOwner, Observer {
+            lblHospitalDetailName.text = it.hospitalName.toString()
+            lblHospitalDetailWebsite.text = it.hospitalWebsite.toString()
+            lblHospitalDetailAlamat.text = it.hospitalAddress.toString()
+            lblHospitalDetailTelpon.text = it.hospitalPhone.toString()
+            lblHospitalDetailRating.text = it.hospitalRating.toString()
+
+            Picasso.get()
+                .load(it.hospitalPhotoUrl)
+                .into(imgHospitalDetail)
+        })
     }
 }

@@ -43,11 +43,33 @@
         android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.HospitalListFragment"
         android:label="HospitalListFragment" >
         <action
-            android:id="@+id/action_itemHospital_to_hospitalDetailFragment"
+            android:id="@+id/actionHospitalDetail"
             app:destination="@id/hospitalDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/hospitalDetailFragment"
         android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.HospitalDetailFragment"
-        android:label="HospitalDetailFragment" />
+        android:label="fragment_hospital_detail">
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="hospitalName"
+            app:argType="string" />
+        <argument
+            android:name="hospitalWebsite"
+            app:argType="string" />
+        <argument
+            android:name="hospitalAddress"
+            app:argType="string" />
+        <argument
+            android:name="hospitalPhone"
+            app:argType="string" />
+        <argument
+            android:name="hospitalPhotoUrl"
+            app:argType="string" />
+        <argument
+            android:name="hospitalRating"
+            app:argType="string" />
+    </fragment>
 </navigation>

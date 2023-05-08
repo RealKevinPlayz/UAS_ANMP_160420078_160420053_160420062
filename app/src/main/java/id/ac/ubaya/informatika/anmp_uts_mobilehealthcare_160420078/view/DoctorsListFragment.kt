@@ -42,9 +42,9 @@ class DoctorsListFragment : Fragment() {
         observeViewModel()
     }
 
-    fun observeViewModel() {
+    private fun observeViewModel() {
         viewModel.doctorLD.observe(viewLifecycleOwner, Observer {
-            doctorListAdapter.updateStudentList(it)
+            doctorListAdapter.updateDoctorList(it)
         })
 
         viewModel.doctorLoadErrorLD.observe(viewLifecycleOwner, Observer {
