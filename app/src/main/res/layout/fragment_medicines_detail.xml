@@ -24,7 +24,7 @@
             android:id="@+id/lblMedicineDetailName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:text="Medicine"
             android:textColor="#000000"
             android:textSize="24sp"
@@ -34,48 +34,48 @@
 
         <TextView
             android:id="@+id/lblMedicineDetailDose"
-            android:layout_width="wrap_content"
+            android:layout_width="360dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="Dosis"
             android:textColor="#000000"
-            android:textSize="18sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lblMedicineDetailDescription" />
 
         <TextView
             android:id="@+id/lblMedicineDetailDescription"
-            android:layout_width="wrap_content"
+            android:layout_width="360dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Description"
             android:textColor="#000000"
-            android:textSize="18sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lblMedicineDetailName" />
 
         <TextView
             android:id="@+id/lblMedicineDetailComposition"
-            android:layout_width="wrap_content"
+            android:layout_width="360dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="Composition"
             android:textColor="#000000"
-            android:textSize="18sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lblMedicineDetailDose" />
 
         <TextView
             android:id="@+id/lblMedicineDetailWarning"
-            android:layout_width="wrap_content"
+            android:layout_width="360dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Warning and Side Effects"
             android:textColor="#000000"
-            android:textSize="18sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lblMedicineDetailComposition" />

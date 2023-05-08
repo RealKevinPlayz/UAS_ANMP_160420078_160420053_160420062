@@ -5,30 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.viewmodel.MedicineListViewModel
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MedicinesListFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+import kotlinx.android.synthetic.main.fragment_hospital_list.refreshLayout
+import kotlinx.android.synthetic.main.fragment_medicines_list.*
+
 class MedicinesListFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var viewModel: MedicineListViewModel
+    private val medicineListAdapter = MedicineListAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,24 +26,46 @@ class MedicinesListFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_medicines_list, container, false)
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(MedicineListViewModel::class.java)
+        viewModel.refresh()
+        medicinesRecView.layoutManager = LinearLayoutManager(context)
+        medicinesRecView.adapter = medicineListAdapter
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MedicinesListFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MedicinesListFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        refreshLayout.setOnRefreshListener {
+            medicinesRecView.visibility = View.GONE
+            txtMedicineListError.visibility = View.GONE
+            medicinesListProgressLoad.visibility = View.VISIBLE
+            viewModel.refresh()
+            refreshLayout.isRefreshing = false
+        }
+
+        observeViewModel()
+    }
+
+    fun observeViewModel() {
+        viewModel.medicineLD.observe(viewLifecycleOwner, Observer {
+            medicineListAdapter.updateMedicineList(it)
+        })
+
+        viewModel.medicineLoadErrorLD.observe(viewLifecycleOwner, Observer {
+            if(it == true) {
+                txtMedicineListError.visibility = View.VISIBLE
+            } else {
+                txtMedicineListError.visibility = View.GONE
             }
+        })
+
+        viewModel.loadingLD.observe(viewLifecycleOwner, Observer {
+            if(it == true) {
+                medicinesRecView.visibility = View.GONE
+                medicinesListProgressLoad.visibility = View.VISIBLE
+            } else {
+                medicinesRecView.visibility = View.VISIBLE
+                medicinesListProgressLoad.visibility = View.GONE
+            }
+        })
+
     }
 }

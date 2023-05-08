@@ -44,7 +44,7 @@ class HospitalListAdapter(val hospitalList:ArrayList<Hospital>)
             val hospitalPhone = hospitalList[position].hospitalPhone.toString()
             val hospitalPhotoUrl = hospitalList[position].hospitalPhotoUrl.toString()
             val hospitalRating = hospitalList[position].hospitalRating.toString()
-            val action = DoctorsListFragmentDirections.actionDoctorDetail(hospitalId, hospitalName, hospitalWebsite,
+            val action = HospitalListFragmentDirections.actionHospitalDetail(hospitalId, hospitalName, hospitalWebsite,
                 hospitalAddress, hospitalPhone, hospitalPhotoUrl, hospitalRating)
             Navigation.findNavController(it).navigate(action)
         }

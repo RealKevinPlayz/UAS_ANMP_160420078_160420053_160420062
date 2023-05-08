@@ -2,12 +2,13 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/healthcare_navigation"
+    android:label="Detail Obat"
     app:startDestination="@id/itemDoctor">
 
     <fragment
         android:id="@+id/itemDoctor"
         android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.DoctorsListFragment"
-        android:label="DoctorsListFragment" >
+        android:label="Daftar Dokter">
         <action
             android:id="@+id/actionDoctorDetail"
             app:destination="@id/doctorsDetailFragment" />
@@ -15,7 +16,7 @@
     <fragment
         android:id="@+id/doctorsDetailFragment"
         android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.DoctorsDetailFragment"
-        android:label="fragment_doctor_detail" >
+        android:label="Detail Dokter">
         <argument
             android:name="id"
             app:argType="string" />
@@ -41,7 +42,7 @@
     <fragment
         android:id="@+id/itemHospital"
         android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.HospitalListFragment"
-        android:label="HospitalListFragment" >
+        android:label="Daftar Rumah Sakit">
         <action
             android:id="@+id/actionHospitalDetail"
             app:destination="@id/hospitalDetailFragment" />
@@ -49,7 +50,7 @@
     <fragment
         android:id="@+id/hospitalDetailFragment"
         android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.HospitalDetailFragment"
-        android:label="fragment_hospital_detail">
+        android:label="Detail Rumah Sakit">
         <argument
             android:name="id"
             app:argType="string" />
@@ -70,6 +71,40 @@
             app:argType="string" />
         <argument
             android:name="hospitalRating"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemMedicine"
+        android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.MedicinesListFragment"
+        android:label="Daftar Obat">
+        <action
+            android:id="@+id/actionMedicineDetail"
+            app:destination="@id/medicinesDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/medicinesDetailFragment"
+        android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.MedicinesDetailFragment"
+        android:label="Detail Obat">
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="medicineName"
+            app:argType="string" />
+        <argument
+            android:name="medicineDesc"
+            app:argType="string" />
+        <argument
+            android:name="medicineDose"
+            app:argType="string" />
+        <argument
+            android:name="medicineComposition"
+            app:argType="string" />
+        <argument
+            android:name="medicineWarning"
+            app:argType="string" />
+        <argument
+            android:name="medicinePhotoUrl"
             app:argType="string" />
     </fragment>
 </navigation>

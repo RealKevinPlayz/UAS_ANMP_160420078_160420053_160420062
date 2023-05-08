@@ -53,8 +53,8 @@ class DoctorsDetailFragment : Fragment() {
         viewModel.doctorLD.observe(viewLifecycleOwner, Observer {
             lblDoctorDetailName.text = it.doctorName.toString()
             lblDoctorDetailSpeciality.text = it.doctorSpecialty.toString()
-            lblDoctorDetailAlamat.text = it.doctorAddress.toString()
-            lblDoctorDetailTelpon.text = it.doctorPhone.toString()
+            lblDoctorDetailAlamat.text = "Alamat Praktek : " + it.doctorAddress.toString()
+            lblDoctorDetailTelpon.text = "Telepon : " + it.doctorPhone.toString()
             lblDoctorDetailRating.text = it.doctorRating.toString()
 
             Picasso.get()

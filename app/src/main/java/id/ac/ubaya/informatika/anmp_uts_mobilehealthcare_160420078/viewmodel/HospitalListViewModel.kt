@@ -19,7 +19,7 @@ class HospitalListViewModel(application: Application): AndroidViewModel(applicat
         val hospitalsJson = "[{'hospitalId' : '1','hospitalName' : 'Rumah Sakit Mitra Keluarga Kenjeran'," +
                 "'hospitalWebsite' : 'https://www.mitrakeluarga.com/kenjeran/menu-fasilitas-rs'," +
                 "'hospitalAddress' : 'Jl. Raya Kenjeran 506, Surabaya'," +
-                "'hospitalPhone' : '0813 9787 1313','hospitalPhotoUrl' : 'https://lh3.googleusercontent.com/p/AF1QipOzC1O5ko6qJqEcZtYCboaL4FsmHL1o2irqPeG9=s680-w680-h510'," +
+                "'hospitalPhone' : '0813-9787-1313','hospitalPhotoUrl' : 'https://lh3.googleusercontent.com/p/AF1QipOzC1O5ko6qJqEcZtYCboaL4FsmHL1o2irqPeG9=s680-w680-h510'," +
                 "'hospitalRating' : '4.5'}]"
 
         val sType = object : TypeToken<ArrayList<Hospital>>() { }.type
