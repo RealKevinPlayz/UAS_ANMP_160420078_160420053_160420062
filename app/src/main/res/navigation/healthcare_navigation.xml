@@ -107,4 +107,38 @@
             android:name="medicinePhotoUrl"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/itemPharmacy"
+        android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.PharmacyListFragment"
+        android:label="Daftar Apotek">
+        <action
+            android:id="@+id/actionPharmacyDetail"
+            app:destination="@id/pharmacyDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pharmacyDetailFragment"
+        android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.PharmacyDetailFragment"
+        android:label="PharmacyDetailFragment" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="pharmacyName"
+            app:argType="string" />
+        <argument
+            android:name="pharmacyOpeningHour"
+            app:argType="string" />
+        <argument
+            android:name="pharmacyAddress"
+            app:argType="string" />
+        <argument
+            android:name="pharmacyPhone"
+            app:argType="string" />
+        <argument
+            android:name="pharmacyPhotoUrl"
+            app:argType="string" />
+        <argument
+            android:name="pharmacyRating"
+            app:argType="string" />
+    </fragment>
 </navigation>
