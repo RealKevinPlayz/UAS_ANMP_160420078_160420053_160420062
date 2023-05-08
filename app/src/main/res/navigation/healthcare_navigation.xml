@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/healthcare_navigation"
     android:label="Detail Obat"
-    app:startDestination="@id/itemDoctor">
+    app:startDestination="@id/itemHome">
 
     <fragment
         android:id="@+id/itemDoctor"
@@ -141,4 +142,9 @@
             android:name="pharmacyRating"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/itemHome"
+        android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" />
 </navigation>
