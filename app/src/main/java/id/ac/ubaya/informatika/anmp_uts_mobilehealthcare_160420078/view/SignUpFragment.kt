@@ -24,6 +24,9 @@ class SignUpFragment : Fragment() {
             val action = SignUpFragmentDirections.signUpToSignIn()
             Navigation.findNavController(it).navigate(action)
         }
-        //te
+        btnRegister.setOnClickListener {
+            val action = SignUpFragmentDirections.signUpToSignIn()
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 }
