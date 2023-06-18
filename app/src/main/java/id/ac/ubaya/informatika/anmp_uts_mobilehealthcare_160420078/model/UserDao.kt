@@ -15,4 +15,7 @@ interface UserDao {
 
     @Delete
     fun deleteUser(user: User)
+
+    @Query("update user set username=:username, first_name=:firstName, last_name=:lastName, password=:password where id=:id")
+    fun update(username: String, firstName: String, lastName: String, password: String, id: Int)
 }
