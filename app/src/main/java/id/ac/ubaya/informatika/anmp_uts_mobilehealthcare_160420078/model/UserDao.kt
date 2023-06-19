@@ -10,8 +10,8 @@ interface UserDao {
     @Query("SELECT * FROM user")
     fun selectAllUser(): List<User>
 
-    @Query("SELECT * FROM user WHERE id= :id")
-    fun selectUser(id:Int): User
+    @Query("SELECT * FROM user WHERE username = :username and password = :password")
+    fun selectUser(username: String, password: String): User
 
     @Delete
     fun deleteUser(user: User)

@@ -18,4 +18,3 @@ data class User(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
 }
-//user model

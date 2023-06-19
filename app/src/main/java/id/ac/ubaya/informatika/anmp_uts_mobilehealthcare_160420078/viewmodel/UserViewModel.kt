@@ -26,11 +26,10 @@ class UserViewModel(application: Application): AndroidViewModel(application), Co
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.IO
 
-    fun fetch(id: Int){
+    fun fetch(username: String, password: String){
         launch {
-            Log.d("idcek", id.toString())
             var db = buildDB(getApplication())
-            userLD.postValue(db.userDao().selectUser(id))
+            db.userDao().selectUser(username, password)
         }
     }
 
