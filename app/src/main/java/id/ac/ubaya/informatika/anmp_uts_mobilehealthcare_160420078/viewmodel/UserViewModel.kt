@@ -25,12 +25,21 @@ class UserViewModel(application: Application): AndroidViewModel(application), Co
 
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.IO
+    var check = false
+    fun fetch(username: String, password: String): Boolean{
 
-    fun fetch(username: String, password: String){
         launch {
             var db = buildDB(getApplication())
-            db.userDao().selectUser(username, password)
+            var data = db.userDao().selectUser(username, password)
+            //userLD.value = data
+           // Log.e("userld", data.toString())
+            if(data != null){
+                check = true
+                Log.e("userchecktrue", check.toString())
+            }
+            Log.e("usercheckfalse", check.toString())
         }
+        return check
     }
 
     fun update(username: String, firstName: String, lastName: String, password: String, id: Int){
