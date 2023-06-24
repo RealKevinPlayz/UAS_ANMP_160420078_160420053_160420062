@@ -8,6 +8,7 @@ import androidx.room.Room
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.R
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.ArticleDatabase
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.UserDatabase
 
 fun ImageView.loadImage(url: String?, progressBar: ProgressBar) {
@@ -30,4 +31,8 @@ var DB_NAME = "userdb"
 fun buildDB(context: Context):UserDatabase{
     var db = Room.databaseBuilder(context, UserDatabase::class.java, DB_NAME).build()
     return db
+}
+fun buildArticleDB(context: Context):ArticleDatabase{
+    var articleDb = Room.databaseBuilder(context, ArticleDatabase::class.java, DB_NAME).build()
+    return articleDb
 }
