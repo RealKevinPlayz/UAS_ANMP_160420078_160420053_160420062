@@ -36,6 +36,8 @@ class UserViewModel(application: Application): AndroidViewModel(application), Co
             if(data != null){
                 check = true
                 Log.e("userchecktrue", check.toString())
+            }else{
+                check = false
             }
             Log.e("usercheckfalse", check.toString())
         }

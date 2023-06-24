@@ -15,6 +15,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.R
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.viewmodel.UserViewModel
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observer
+import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_sign_in.*
 import java.util.concurrent.TimeUnit
 
@@ -40,14 +44,44 @@ class SignInFragment : Fragment() {
             var txtPassword = view.findViewById<EditText>(R.id.txtPassword)
             var login = viewModel.fetch(txtUsername.text.toString(), txtPassword.text.toString())
             Toast.makeText(view.context, "Checking Data", Toast.LENGTH_LONG).show()
-            Log.e("login check", login.toString())
-            if(login){
-                var intent = Intent(activity, MainActivity::class.java)
-                startActivity(intent)
+            val observableNotification = io.reactivex.rxjava3.core.Observable.timer(5, TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    login = viewModel.fetch(txtUsername.text.toString(), txtPassword.text.toString())
+                    Log.e("login check", login.toString())
+                    if(login){
+                        var intent = Intent(activity, MainActivity::class.java)
+                        startActivity(intent)
+                    }
+                    else{
+                        Toast.makeText(view.context, "Incorrect username or password", Toast.LENGTH_LONG).show()
+                    }
+                }
+
+            val observable = io.reactivex.rxjava3.core.Observable.just("a stream of data", "hellow", "world")
+
+            val observer = object : Observer<String> {
+                override fun onSubscribe(d: Disposable?) {
+                    Log.wtf("Messages", "begin subscribe")
+                }
+
+                override fun onNext(t: String?) {
+                    Log.wtf("Messages", "data: $t")
+                }
+
+                override fun onError(e: Throwable?) {
+                    Log.wtf("Messages", "error: ${e!!.message.toString()}")
+                }
+
+                override fun onComplete() {
+                    Log.wtf("Messages", "complete")
+                }
             }
-            else{
-                Toast.makeText(view.context, "Incorrect username or password", Toast.LENGTH_LONG).show()
-            }
+
+            observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer)
+
         }
     }
 }
