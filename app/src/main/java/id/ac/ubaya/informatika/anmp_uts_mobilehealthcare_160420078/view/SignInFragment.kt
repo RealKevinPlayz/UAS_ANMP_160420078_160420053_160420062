@@ -24,6 +24,7 @@ import java.util.concurrent.TimeUnit
 
 class SignInFragment : Fragment() {
     private lateinit var viewModel: UserViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

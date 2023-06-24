@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.R
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.viewmodel.ArticleListViewModel
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), ArticleLayoutInterface {
+    private lateinit var viewModel: ArticleListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
