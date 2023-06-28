@@ -14,7 +14,7 @@ import kotlin.coroutines.CoroutineContext
 
 class ArticleListViewModel(application: Application):AndroidViewModel(application), CoroutineScope {
     var articleLD = MutableLiveData<List<Article>>()
-    val todoLoadErrorLD = MutableLiveData<Boolean>()
+    val articleLoadErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
     private var job = Job()
 
@@ -23,9 +23,10 @@ class ArticleListViewModel(application: Application):AndroidViewModel(applicatio
 
     fun refreshArticle() {
         loadingLD.value = true
-        todoLoadErrorLD.value = false
+        articleLoadErrorLD.value = false
         launch {
             var articleDb = buildArticleDB(getApplication())
+            articleDb.articleDao().insertAll(*Article.populateData())
             articleLD.postValue(articleDb.articleDao().selectAllArticle())
         }
     }
@@ -41,6 +42,15 @@ class ArticleListViewModel(application: Application):AndroidViewModel(applicatio
         launch {
             val articleDb = buildArticleDB(getApplication())
             articleDb.articleDao().deleteArticle(article)
+        }
+    }
+
+    fun updateDefault(){
+        launch {
+            var articleData = Article("Regular Exercise: Key for Heart Health", "Regular exercise is essential for a healthy heart. It strengthens the heart, improves blood circulation, and reduces the risk of cardiovascular diseases. Studies consistently show that individuals who exercise regularly have a lower likelihood of developing heart disease, high blood pressure, and obesity. Incorporating activities like walking, running, swimming, or cycling into daily routines significantly benefits the cardiovascular system. Exercise also contributes to overall well-being by managing stress, improving mood, boosting energy levels, and promoting better sleep. Aim for at least 150 minutes of moderate-intensity exercise or 75 minutes of vigorous exercise per week for optimal heart health.", "https://blog.1life.co.uk/hubfs/Why%20You%20Should%20Have%20a%20Regular%20Exercise%20Routine.jpg")
+
+            var db = buildArticleDB(getApplication())
+            db.articleDao().insertAll(articleData)
         }
     }
 }

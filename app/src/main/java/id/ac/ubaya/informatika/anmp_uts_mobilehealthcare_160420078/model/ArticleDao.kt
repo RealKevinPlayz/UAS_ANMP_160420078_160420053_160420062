@@ -7,6 +7,9 @@ interface ArticleDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg article: Article)
 
+//    @Insert(onConflict = OnConflictStrategy.REPLACE)
+//    fun insertArticle(vararg article: Array<Article>)
+
     @Query("SELECT * FROM article")
     fun selectAllArticle(): List<Article>
 

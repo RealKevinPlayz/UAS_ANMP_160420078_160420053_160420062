@@ -36,6 +36,8 @@
                     android:layout_width="100dp"
                     android:layout_height="0dp"
                     android:scaleType="centerCrop"
+                    android:imageUrl="@{article.urlGambar}"
+                    android:progressBar="@{articleCardProgressBar}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"

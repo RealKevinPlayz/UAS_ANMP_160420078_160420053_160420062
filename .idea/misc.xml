@@ -8,7 +8,11 @@
         <entry key="..\:/Users/Asus/AndroidStudioProjects/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/drawable/ic_baseline_doctor.xml" value="0.188" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/layout/activity_sign_in.xml" value="0.1796875" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/layout/article_list_item.xml" value="0.16032608695652173" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/layout/doctors_list_item.xml" value="0.13722826086956522" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/layout/fragment_home.xml" value="0.16032608695652173" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/layout/fragment_hospital_detail.xml" value="0.16032608695652173" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/layout/fragment_hospital_list.xml" value="0.16032608695652173" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/layout/fragment_sign_in.xml" value="0.22" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/layout/fragment_sign_up.xml" value="0.22" />
       </map>
