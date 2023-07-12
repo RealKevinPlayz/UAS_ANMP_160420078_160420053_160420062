@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.util.DB_NAME
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.util.MIGRATION_1_2
 
 @Database(entities = [User::class], version =  1)
 abstract class UserDatabase: RoomDatabase() {
@@ -15,7 +17,7 @@ abstract class UserDatabase: RoomDatabase() {
             Room.databaseBuilder(
                 context.applicationContext,
                 UserDatabase::class.java,
-                "userdb").build()
+                DB_NAME).build()
         operator fun invoke(context:Context) {
             if(instance!=null) {
                 synchronized(LOCK) {

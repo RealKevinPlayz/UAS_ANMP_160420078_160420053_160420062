@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.doctors_list_item.view.*
 
 var articleList = null
 
-class ArticleListAdapter(val articleList:ArrayList<Article>) : RecyclerView.Adapter<ArticleListAdapter.ArticleViewHolder>() {
+class ArticleListAdapter(val articleList:ArrayList<Article>, var adapterOnClick : (Article) -> Unit) : RecyclerView.Adapter<ArticleListAdapter.ArticleViewHolder>(), ArticleLayoutInterface {
     class ArticleViewHolder(var view: ArticleListItemBinding): RecyclerView.ViewHolder(view.root)
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
@@ -28,8 +28,8 @@ class ArticleListAdapter(val articleList:ArrayList<Article>) : RecyclerView.Adap
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = DataBindingUtil.inflate<ArticleListItemBinding>(inflater, R.layout.article_list_item, parent, false)
-
+        //val view = DataBindingUtil.inflate<ArticleListItemBinding>(inflater, R.layout.article_list_item, parent, false)
+        val view = ArticleListItemBinding.inflate(inflater, parent, false)
         return ArticleViewHolder(view)
     }
 

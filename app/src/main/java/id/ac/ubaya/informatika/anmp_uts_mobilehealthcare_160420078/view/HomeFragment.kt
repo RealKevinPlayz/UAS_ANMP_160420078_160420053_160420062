@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(), ArticleLayoutInterface {
     private lateinit var viewModel: ArticleListViewModel
-    private val articleListAdapter = ArticleListAdapter(arrayListOf())
+    private var articleListAdapter = ArticleListAdapter(arrayListOf(), { item -> viewModel.clearTaskArticle(item) })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,8 +35,7 @@ class HomeFragment : Fragment(), ArticleLayoutInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(ArticleListViewModel::class.java)
-        viewModel.updateDefault()
-        //viewModel.refreshArticle()
+        viewModel.refreshArticle()
         articlesRecView.layoutManager = LinearLayoutManager(context)
         articlesRecView.adapter = articleListAdapter
 
@@ -47,7 +46,6 @@ class HomeFragment : Fragment(), ArticleLayoutInterface {
             viewModel.refreshArticle()
             refreshLayout.isRefreshing = false
         }
-
         observeViewModel()
     }
 
@@ -55,7 +53,6 @@ class HomeFragment : Fragment(), ArticleLayoutInterface {
         viewModel.articleLD.observe(viewLifecycleOwner, Observer {
             articleListAdapter.updateArticleList(it)
         })
-
         viewModel.articleLoadErrorLD.observe(viewLifecycleOwner, Observer {
             if(it == true) {
                 txtArticleListError.visibility = View.VISIBLE
@@ -73,6 +70,5 @@ class HomeFragment : Fragment(), ArticleLayoutInterface {
                 articlesListProgressLoad.visibility = View.GONE
             }
         })
-
     }
 }

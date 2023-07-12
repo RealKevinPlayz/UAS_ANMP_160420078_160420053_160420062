@@ -25,16 +25,16 @@ class ArticleListViewModel(application: Application):AndroidViewModel(applicatio
         loadingLD.value = true
         articleLoadErrorLD.value = false
         launch {
-            var articleDb = buildArticleDB(getApplication())
-            articleDb.articleDao().insertAll(*Article.populateData())
-            articleLD.postValue(articleDb.articleDao().selectAllArticle())
+            var db = buildArticleDB(getApplication())
+            articleLD.postValue(db.articleDao().selectAllArticle())
         }
     }
 
+    /*
     fun insertArticle(article: Article) {
         launch {
-            var articleDb = buildArticleDB(getApplication())
-            articleDb.articleDao().insertAll(article)
+            var db = buildArticleDB(getApplication())
+            db.articleDao().insertAll(article)
         }
     }
 
@@ -51,6 +51,13 @@ class ArticleListViewModel(application: Application):AndroidViewModel(applicatio
 
             var db = buildArticleDB(getApplication())
             db.articleDao().insertAll(articleData)
+        }
+    }
+    */
+
+    fun clearTaskArticle(article: Article){
+        launch {
+            var db = buildArticleDB(getApplication())
         }
     }
 }

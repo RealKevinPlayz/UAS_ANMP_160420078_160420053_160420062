@@ -15,7 +15,7 @@ data class Article(
 ){
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
-
+    /*
     companion object{
         fun populateData(): Array<Article>{
             return arrayOf(
@@ -25,6 +25,7 @@ data class Article(
             )
         }
     }
+    */
 }
 /*
 @Entity

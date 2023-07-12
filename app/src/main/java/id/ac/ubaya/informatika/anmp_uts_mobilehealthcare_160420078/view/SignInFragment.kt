@@ -63,21 +63,22 @@ class SignInFragment : Fragment() {
             val observable = io.reactivex.rxjava3.core.Observable.just("a stream of data", "hellow", "world")
 
             val observer = object : Observer<String> {
-                override fun onSubscribe(d: Disposable?) {
+                override fun onSubscribe(d: Disposable) {
                     Log.wtf("Messages", "begin subscribe")
                 }
 
-                override fun onNext(t: String?) {
+                override fun onNext(t: String) {
                     Log.wtf("Messages", "data: $t")
                 }
 
-                override fun onError(e: Throwable?) {
+                override fun onError(e: Throwable) {
                     Log.wtf("Messages", "error: ${e!!.message.toString()}")
                 }
 
                 override fun onComplete() {
                     Log.wtf("Messages", "complete")
                 }
+
             }
 
             observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
