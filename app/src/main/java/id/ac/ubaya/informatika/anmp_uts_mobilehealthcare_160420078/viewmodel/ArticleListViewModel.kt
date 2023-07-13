@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.Article
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.User
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.util.buildArticleDB
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.util.buildDB
 import kotlinx.coroutines.CoroutineScope
@@ -14,13 +15,18 @@ import kotlin.coroutines.CoroutineContext
 
 class ArticleListViewModel(application: Application):AndroidViewModel(application), CoroutineScope {
     var articleLD = MutableLiveData<List<Article>>()
-    val articleLoadErrorLD = MutableLiveData<Boolean>()
-    val loadingLD = MutableLiveData<Boolean>()
+    var articleLoadErrorLD = MutableLiveData<Boolean>()
+    var loadingLD = MutableLiveData<Boolean>()
     private var job = Job()
 
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.IO
-
+    fun addArticle(article: Article){
+        launch {
+            var db = buildArticleDB(getApplication())
+            db.articleDao().insertAll(article)
+        }
+    }
     fun refreshArticle() {
         loadingLD.value = true
         articleLoadErrorLD.value = false
