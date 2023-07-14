@@ -58,7 +58,16 @@ class HomeFragment : Fragment(), ArticleLayoutInterface {
     private fun observeViewModel() {
         viewModel.articleLD.observe(viewLifecycleOwner, Observer {
             articleListAdapter.updateArticleList(it)
+            if (it.isEmpty()){
+                txtArticleListError?.visibility = View.VISIBLE
+                articlesListProgressLoad?.visibility = View.VISIBLE
+            }
+            else{
+                txtArticleListError?.visibility = View.GONE
+                articlesListProgressLoad?.visibility = View.GONE
+            }
         })
+        /*
         viewModel.articleLoadErrorLD.observe(viewLifecycleOwner, Observer {
             if(it == true) {
                 txtArticleListError.visibility = View.VISIBLE
@@ -76,5 +85,6 @@ class HomeFragment : Fragment(), ArticleLayoutInterface {
                 articlesListProgressLoad.visibility = View.GONE
             }
         })
+        */
     }
 }
