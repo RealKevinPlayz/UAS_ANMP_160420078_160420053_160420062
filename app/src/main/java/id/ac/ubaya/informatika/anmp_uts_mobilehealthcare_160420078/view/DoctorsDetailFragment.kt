@@ -23,7 +23,7 @@ class DoctorsDetailFragment : Fragment() {
     var doctorAddress = ""
     var doctorPhone = ""
     var doctorPhotoUrl = ""
-    var doctorRating = ""
+    var doctorRating = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +45,7 @@ class DoctorsDetailFragment : Fragment() {
             doctorRating = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorRating
         }
         viewModel = ViewModelProvider(this).get(DoctorDetailViewModel::class.java)
-        viewModel.fetch(doctorId, doctorName, doctorSpecialty, doctorAddress, doctorPhone, doctorPhotoUrl, doctorRating)
+        viewModel.fetch(doctorName, doctorSpecialty, doctorAddress, doctorPhone, doctorPhotoUrl, doctorRating)
         observeViewModel()
     }
 

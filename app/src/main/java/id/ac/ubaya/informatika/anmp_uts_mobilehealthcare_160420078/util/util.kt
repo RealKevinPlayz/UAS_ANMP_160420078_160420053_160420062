@@ -13,6 +13,8 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.R
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.ArticleDatabase
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.DoctorDatabase
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.ScheduleDatabase
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.UserDatabase
 
 fun ImageView.loadImage(url: String?, progressBar: ProgressBar) {
@@ -33,6 +35,8 @@ fun ImageView.loadImage(url: String?, progressBar: ProgressBar) {
 
 var DB_NAME = "userdb"
 var DB_2 = "articledb"
+var DB_DOCTOR = "doctordb"
+var DB_SCHEDULE = "scheduledb"
 fun buildDB(context: Context):UserDatabase{
     var db = Room.databaseBuilder(context, UserDatabase::class.java, DB_NAME).build()
     return db
@@ -41,6 +45,14 @@ fun buildArticleDB(context: Context):ArticleDatabase{
     var articleDb = Room.databaseBuilder(context, ArticleDatabase::class.java, DB_2).addMigrations(
         MIGRATION_1_2).build()
     return articleDb
+}
+fun buildDoctorDB(context: Context): DoctorDatabase {
+    var db = Room.databaseBuilder(context, DoctorDatabase::class.java, DB_DOCTOR).build()
+    return db
+}
+fun buildScheduleDB(context: Context): ScheduleDatabase {
+    var db = Room.databaseBuilder(context, ScheduleDatabase::class.java, DB_SCHEDULE).build()
+    return db
 }
 @BindingAdapter("android:imageUrl", "android:progressBar")
 fun loadPhotoURL(view:ImageView, url:String, pb:ProgressBar){

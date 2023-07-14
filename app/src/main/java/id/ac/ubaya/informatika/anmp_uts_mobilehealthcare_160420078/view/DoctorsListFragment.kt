@@ -15,7 +15,11 @@ import kotlinx.android.synthetic.main.fragment_doctors_list.*
 class DoctorsListFragment : Fragment() {
 
     private lateinit var viewModel: DoctorListViewModel
-    private val doctorListAdapter = DoctorListAdapter(arrayListOf())
+    private val doctorListAdapter = DoctorListAdapter(arrayListOf(), { item -> viewModel.clearTaskDoctor(item) })
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +31,7 @@ class DoctorsListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(DoctorListViewModel::class.java)
-        viewModel.refresh()
+        viewModel.refreshDoctor()
         doctorsRecView.layoutManager = LinearLayoutManager(context)
         doctorsRecView.adapter = doctorListAdapter
 
@@ -35,7 +39,7 @@ class DoctorsListFragment : Fragment() {
             doctorsRecView.visibility = View.GONE
             txtDoctorListError.visibility = View.GONE
             doctorsListProgressLoad.visibility = View.VISIBLE
-            viewModel.refresh()
+            viewModel.refreshDoctor()
             refreshLayout.isRefreshing = false
         }
 
@@ -45,8 +49,16 @@ class DoctorsListFragment : Fragment() {
     private fun observeViewModel() {
         viewModel.doctorLD.observe(viewLifecycleOwner, Observer {
             doctorListAdapter.updateDoctorList(it)
+            if (it.isEmpty()){
+                txtDoctorListError?.visibility = View.VISIBLE
+                doctorsListProgressLoad?.visibility = View.VISIBLE
+            }
+            else{
+                txtDoctorListError?.visibility = View.GONE
+                doctorsListProgressLoad?.visibility = View.GONE
+            }
         })
-
+        /*
         viewModel.doctorLoadErrorLD.observe(viewLifecycleOwner, Observer {
             if(it == true) {
                 txtDoctorListError.visibility = View.VISIBLE
@@ -64,8 +76,6 @@ class DoctorsListFragment : Fragment() {
                 doctorsListProgressLoad.visibility = View.GONE
             }
         })
-
+        */
     }
-
-
 }

@@ -38,7 +38,7 @@
             app:argType="string" />
         <argument
             android:name="doctorRating"
-            app:argType="string" />
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/itemHospital"
