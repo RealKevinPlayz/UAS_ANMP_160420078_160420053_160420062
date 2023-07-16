@@ -47,12 +47,12 @@ fun buildArticleDB(context: Context):ArticleDatabase{
     return articleDb
 }
 fun buildDoctorDB(context: Context): DoctorDatabase {
-    var db = Room.databaseBuilder(context, DoctorDatabase::class.java, DB_DOCTOR).build()
-    return db
+    var doctorDb = Room.databaseBuilder(context, DoctorDatabase::class.java, DB_DOCTOR).build()
+    return doctorDb
 }
 fun buildScheduleDB(context: Context): ScheduleDatabase {
-    var db = Room.databaseBuilder(context, ScheduleDatabase::class.java, DB_SCHEDULE).build()
-    return db
+    var scheduleDb = Room.databaseBuilder(context, ScheduleDatabase::class.java, DB_SCHEDULE).build()
+    return scheduleDb
 }
 @BindingAdapter("android:imageUrl", "android:progressBar")
 fun loadPhotoURL(view:ImageView, url:String, pb:ProgressBar){

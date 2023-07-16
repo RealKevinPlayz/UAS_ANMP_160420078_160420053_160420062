@@ -7,18 +7,18 @@ import androidx.room.PrimaryKey
 @Entity
 data class Doctor(
     @ColumnInfo(name = "doctor_name")
-    var doctorName:String?,
+    var doctorName:String,
     @ColumnInfo(name = "doctor_specialty")
-    var doctorSpecialty:String?,
+    var doctorSpecialty:String,
     @ColumnInfo(name = "doctor_address")
-    var doctorAddress:String?,
+    var doctorAddress:String,
     @ColumnInfo(name = "doctor_phone")
-    var doctorPhone:String?,
+    var doctorPhone:String,
     @ColumnInfo(name = "doctor_photo_url")
-    var doctorPhotoUrl:String?,
+    var doctorPhotoUrl:String,
     @ColumnInfo(name = "doctor_rating")
-    var doctorRating:Int?
+    var doctorRating:Int
 ){
     @PrimaryKey(autoGenerate = true)
-    var id: Int? = 0
+    var id: Int = 0
 }
