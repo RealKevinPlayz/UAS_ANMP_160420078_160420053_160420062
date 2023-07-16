@@ -8,7 +8,7 @@ class HospitalDetailViewModel : ViewModel() {
     val hospitalLD = MutableLiveData<Hospital>()
     fun fetch(id:String, hospitalName:String, hospitalWebsite:String, hospitalAddress:String,
               hospitalPhone:String, hospitalPhotoUrl:String, hospitalRating:String) {
-        val hospitalData = Hospital(id, hospitalName, hospitalWebsite, hospitalAddress, hospitalPhone,
+        val hospitalData = Hospital(hospitalName, hospitalWebsite, hospitalAddress, hospitalPhone,
             hospitalPhotoUrl, hospitalRating)
         hospitalLD.value = hospitalData
     }

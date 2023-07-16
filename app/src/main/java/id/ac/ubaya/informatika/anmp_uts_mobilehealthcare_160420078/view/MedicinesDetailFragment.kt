@@ -45,7 +45,7 @@ class MedicinesDetailFragment : Fragment() {
             medicinePhotoUrl = MedicinesDetailFragmentArgs.fromBundle(requireArguments()).medicinePhotoUrl
         }
         viewModel = ViewModelProvider(this).get(MedicineDetailViewModel::class.java)
-        viewModel.fetch(medicineId, medicineName, medicineDesc, medicineDose, medicineComposition, medicineWarning, medicinePhotoUrl)
+        viewModel.fetch(medicineName, medicineDesc, medicineDose, medicineComposition, medicineWarning, medicinePhotoUrl)
         observeViewModel()
     }
 

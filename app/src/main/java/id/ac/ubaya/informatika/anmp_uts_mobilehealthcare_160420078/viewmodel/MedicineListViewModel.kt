@@ -5,17 +5,40 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.Doctor
 
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.Medicine
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.util.buildDoctorDB
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.util.buildMedicineDB
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class MedicineListViewModel(application: Application): AndroidViewModel(application){
-    val medicineLD = MutableLiveData<ArrayList<Medicine>>()
+class MedicineListViewModel(application: Application): AndroidViewModel(application),
+    CoroutineScope {
+    val medicineLD = MutableLiveData<List<Medicine>>()
     val medicineLoadErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
+    private var job = Job()
 
-    fun refresh() {
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.IO
+    fun addMedicine(medicine: Medicine){
+        launch {
+            var db = buildMedicineDB(getApplication())
+            db.medicineDao().insertAll(medicine)
+        }
+    }
+
+    fun refreshMedicine() {
         loadingLD.value = true
         medicineLoadErrorLD.value = false
+        launch {
+            var db = buildMedicineDB(getApplication())
+            medicineLD.postValue(db.medicineDao().selectAllMedicine())
+        }
 
         val medicinesJson = "[{'medicineId' : '1','medicineName' : 'Amoxicillin'," +
                 "'medicineDesc' : 'Mengatasi infeksi bakteri, termasuk gonore, otitis media, atau infeksi ginjal (pielonefritis)'," +
@@ -58,9 +81,9 @@ class MedicineListViewModel(application: Application): AndroidViewModel(applicat
         loadingLD.value = false
     }
 
-    override fun onCleared() {
-        super.onCleared()
+    fun clearTaskMedicine(medicine: Medicine){
+        launch {
+            var db = buildMedicineDB(getApplication())
+        }
     }
-
-
 }

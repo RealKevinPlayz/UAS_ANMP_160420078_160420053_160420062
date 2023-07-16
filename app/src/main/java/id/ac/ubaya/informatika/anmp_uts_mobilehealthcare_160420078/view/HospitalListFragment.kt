@@ -10,12 +10,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.R
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.viewmodel.HospitalListViewModel
+import kotlinx.android.synthetic.main.fragment_doctors_list.*
 import kotlinx.android.synthetic.main.fragment_hospital_list.*
+import kotlinx.android.synthetic.main.fragment_hospital_list.refreshLayout
 
 class HospitalListFragment : Fragment() {
 
     private lateinit var viewModel: HospitalListViewModel
-    private val hospitalListAdapter = HospitalListAdapter(arrayListOf())
+    private val hospitalListAdapter = HospitalListAdapter(arrayListOf(), { item -> viewModel.clearTaskHospital(item) })
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +29,7 @@ class HospitalListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(HospitalListViewModel::class.java)
-        viewModel.refresh()
+        viewModel.refreshHospital()
         hospitalsRecView.layoutManager = LinearLayoutManager(context)
         hospitalsRecView.adapter = hospitalListAdapter
 
@@ -35,7 +37,7 @@ class HospitalListFragment : Fragment() {
             hospitalsRecView.visibility = View.GONE
             txtHospitalListError.visibility = View.GONE
             hospitalsListProgressLoad.visibility = View.VISIBLE
-            viewModel.refresh()
+            viewModel.refreshHospital()
             refreshLayout.isRefreshing = false
         }
 
@@ -43,6 +45,18 @@ class HospitalListFragment : Fragment() {
     }
 
     fun observeViewModel() {
+        viewModel.hospitalLD.observe(viewLifecycleOwner, Observer {
+            hospitalListAdapter.updateHospitalList(it)
+            if (it.isEmpty()){
+                txtDoctorListError?.visibility = View.VISIBLE
+                doctorsListProgressLoad?.visibility = View.VISIBLE
+            }
+            else{
+                txtDoctorListError?.visibility = View.GONE
+                doctorsListProgressLoad?.visibility = View.GONE
+            }
+        })
+        /*
         viewModel.hospitalLD.observe(viewLifecycleOwner, Observer {
             hospitalListAdapter.updateHospitalList(it)
         })
@@ -64,6 +78,6 @@ class HospitalListFragment : Fragment() {
                 hospitalsListProgressLoad.visibility = View.GONE
             }
         })
-
+        */
     }
 }

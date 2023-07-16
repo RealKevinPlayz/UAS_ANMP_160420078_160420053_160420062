@@ -5,17 +5,40 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.Doctor
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.Hospital
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.util.buildDoctorDB
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.util.buildHospitalDB
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class HospitalListViewModel(application: Application): AndroidViewModel(application){
-    val hospitalLD = MutableLiveData<ArrayList<Hospital>>()
+class HospitalListViewModel(application: Application): AndroidViewModel(application),
+    CoroutineScope {
+    val hospitalLD = MutableLiveData<List<Hospital>>()
     val hospitalLoadErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
+    private var job = Job()
 
-    fun refresh() {
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.IO
+    fun addHospital(hospital: Hospital){
+        launch {
+            var db = buildHospitalDB(getApplication())
+            db.hospitalDao().insertAll(hospital)
+        }
+    }
+
+    fun refreshHospital() {
         loadingLD.value = true
         hospitalLoadErrorLD.value = false
-
+        launch {
+            var db = buildHospitalDB(getApplication())
+            hospitalLD.postValue(db.hospitalDao().selectAllHospital())
+        }
+        /*
         val hospitalsJson = "[{'hospitalId' : '1','hospitalName' : 'Rumah Sakit Mitra Keluarga Kenjeran'," +
                 "'hospitalWebsite' : 'www.mitrakeluarga.com/kenjeran/menu-fasilitas-rs'," +
                 "'hospitalAddress' : 'Jl. Raya Kenjeran 506, Surabaya'," +
@@ -41,11 +64,12 @@ class HospitalListViewModel(application: Application): AndroidViewModel(applicat
         hospitalLD.value = result
         hospitalLoadErrorLD.value = false
         loadingLD.value = false
+        */
     }
 
-    override fun onCleared() {
-        super.onCleared()
+    fun clearTaskHospital(hospital: Hospital){
+        launch {
+            var db = buildHospitalDB(getApplication())
+        }
     }
-
-
 }

@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_medicines_list.*
 
 class MedicinesListFragment : Fragment() {
     private lateinit var viewModel: MedicineListViewModel
-    private val medicineListAdapter = MedicineListAdapter(arrayListOf())
+    private val medicineListAdapter = MedicineListAdapter(arrayListOf(), { item -> viewModel.clearTaskMedicine(item) })
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +29,7 @@ class MedicinesListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(MedicineListViewModel::class.java)
-        viewModel.refresh()
+        viewModel.refreshMedicine()
         medicinesRecView.layoutManager = LinearLayoutManager(context)
         medicinesRecView.adapter = medicineListAdapter
 
@@ -37,7 +37,7 @@ class MedicinesListFragment : Fragment() {
             medicinesRecView.visibility = View.GONE
             txtMedicineListError.visibility = View.GONE
             medicinesListProgressLoad.visibility = View.VISIBLE
-            viewModel.refresh()
+            viewModel.refreshMedicine()
             refreshLayout.isRefreshing = false
         }
 

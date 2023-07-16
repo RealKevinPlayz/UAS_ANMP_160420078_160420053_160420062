@@ -5,18 +5,41 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.Doctor
 
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.Pharmacy
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.util.buildDoctorDB
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.util.buildPharmacyDB
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class PharmacyListViewModel(application: Application): AndroidViewModel(application){
-    val pharmacyLD = MutableLiveData<ArrayList<Pharmacy>>()
+class PharmacyListViewModel(application: Application): AndroidViewModel(application),
+    CoroutineScope {
+    val pharmacyLD = MutableLiveData<List<Pharmacy>>()
     val pharmacyLoadErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
+    private var job = Job()
 
-    fun refresh() {
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.IO
+    fun addPharmacy(pharmacy: Pharmacy){
+        launch {
+            var db = buildPharmacyDB(getApplication())
+            db.pharmacyDao().insertAll(pharmacy)
+        }
+    }
+
+    fun refreshPharmacy() {
         loadingLD.value = true
         pharmacyLoadErrorLD.value = false
-
+        launch {
+            var db = buildPharmacyDB(getApplication())
+            pharmacyLD.postValue(db.pharmacyDao().selectAllPharmacy())
+        }
+        /*
         val pharmaciesJson = "[{'pharmacyId': '1', 'pharmacyName': 'Mediplus Pharmacy'," +
                 "'pharmacyOpeningHour': '09:00 - 18:00', " +
                 "'pharmacyAddress': '123 Main St, Anytown USA'," +
@@ -54,11 +77,12 @@ class PharmacyListViewModel(application: Application): AndroidViewModel(applicat
         pharmacyLD.value = result
         pharmacyLoadErrorLD.value = false
         loadingLD.value = false
+        */
     }
 
-    override fun onCleared() {
-        super.onCleared()
+    fun clearTaskPharmacy(pharmacy: Pharmacy){
+        launch {
+            var db = buildPharmacyDB(getApplication())
+        }
     }
-
-
 }

@@ -12,10 +12,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.R
-import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.ArticleDatabase
-import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.DoctorDatabase
-import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.ScheduleDatabase
-import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.UserDatabase
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.*
 
 fun ImageView.loadImage(url: String?, progressBar: ProgressBar) {
     Picasso.get()
@@ -37,6 +34,9 @@ var DB_NAME = "userdb"
 var DB_2 = "articledb"
 var DB_DOCTOR = "doctordb"
 var DB_SCHEDULE = "scheduledb"
+var DB_MEDICINE = "medicinedb"
+var DB_PHARMACY = "pharmacydb"
+var DB_HOSPITAL = "hospitaldb"
 fun buildDB(context: Context):UserDatabase{
     var db = Room.databaseBuilder(context, UserDatabase::class.java, DB_NAME).build()
     return db
@@ -53,6 +53,18 @@ fun buildDoctorDB(context: Context): DoctorDatabase {
 fun buildScheduleDB(context: Context): ScheduleDatabase {
     var scheduleDb = Room.databaseBuilder(context, ScheduleDatabase::class.java, DB_SCHEDULE).build()
     return scheduleDb
+}
+fun buildMedicineDB(context: Context): MedicinesDatabase {
+    var medicineDb = Room.databaseBuilder(context, MedicinesDatabase::class.java, DB_MEDICINE).build()
+    return medicineDb
+}
+fun buildPharmacyDB(context: Context): PharmaciesDatabase {
+    var pharmacyDb = Room.databaseBuilder(context, PharmaciesDatabase::class.java, DB_PHARMACY).build()
+    return pharmacyDb
+}
+fun buildHospitalDB(context: Context): HospitalsDatabase {
+    var hospitalDb = Room.databaseBuilder(context, HospitalsDatabase::class.java, DB_HOSPITAL).build()
+    return hospitalDb
 }
 @BindingAdapter("android:imageUrl", "android:progressBar")
 fun loadPhotoURL(view:ImageView, url:String, pb:ProgressBar){

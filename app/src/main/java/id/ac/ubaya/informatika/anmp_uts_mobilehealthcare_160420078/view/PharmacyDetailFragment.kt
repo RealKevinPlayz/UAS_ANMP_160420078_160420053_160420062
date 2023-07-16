@@ -46,7 +46,7 @@ class PharmacyDetailFragment : Fragment() {
             pharmacyRating = PharmacyDetailFragmentArgs.fromBundle(requireArguments()).pharmacyRating
         }
         viewModel = ViewModelProvider(this).get(PharmacyDetailViewModel::class.java)
-        viewModel.fetch(pharmacyId, pharmacyName, pharmacyOpeningHour, pharmacyAddress, pharmacyPhone, pharmacyPhotoUrl, pharmacyRating)
+        viewModel.fetch(pharmacyName, pharmacyOpeningHour, pharmacyAddress, pharmacyPhone, pharmacyPhotoUrl, pharmacyRating)
         observeViewModel()
     }
 
