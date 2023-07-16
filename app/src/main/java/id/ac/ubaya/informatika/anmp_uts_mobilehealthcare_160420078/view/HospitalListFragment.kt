@@ -48,12 +48,12 @@ class HospitalListFragment : Fragment() {
         viewModel.hospitalLD.observe(viewLifecycleOwner, Observer {
             hospitalListAdapter.updateHospitalList(it)
             if (it.isEmpty()){
-                txtDoctorListError?.visibility = View.VISIBLE
-                doctorsListProgressLoad?.visibility = View.VISIBLE
+                txtHospitalListError?.visibility = View.VISIBLE
+                hospitalsListProgressLoad?.visibility = View.VISIBLE
             }
             else{
-                txtDoctorListError?.visibility = View.GONE
-                doctorsListProgressLoad?.visibility = View.GONE
+                txtHospitalListError?.visibility = View.GONE
+                hospitalsListProgressLoad?.visibility = View.GONE
             }
         })
         /*

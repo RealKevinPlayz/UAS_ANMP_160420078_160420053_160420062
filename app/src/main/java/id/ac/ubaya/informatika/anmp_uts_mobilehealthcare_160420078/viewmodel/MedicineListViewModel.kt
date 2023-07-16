@@ -39,7 +39,7 @@ class MedicineListViewModel(application: Application): AndroidViewModel(applicat
             var db = buildMedicineDB(getApplication())
             medicineLD.postValue(db.medicineDao().selectAllMedicine())
         }
-
+        /*
         val medicinesJson = "[{'medicineId' : '1','medicineName' : 'Amoxicillin'," +
                 "'medicineDesc' : 'Mengatasi infeksi bakteri, termasuk gonore, otitis media, atau infeksi ginjal (pielonefritis)'," +
                 "'medicineDose' : 'Dewasa dan anak dengan BB ≥40 kg: 250–500 mg, tiap 8 jam atau 500–1.000 mg, tiap 12 jam. Untuk infeksi berat dosisnya adalah 750–1.000 mg, tiap 8 jam.'," +
@@ -79,6 +79,7 @@ class MedicineListViewModel(application: Application): AndroidViewModel(applicat
         medicineLD.value = result
         medicineLoadErrorLD.value = false
         loadingLD.value = false
+        */
     }
 
     fun clearTaskMedicine(medicine: Medicine){
