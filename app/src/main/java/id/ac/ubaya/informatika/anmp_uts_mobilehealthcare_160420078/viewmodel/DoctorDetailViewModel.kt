@@ -6,7 +6,7 @@ import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.Doctor
 
 class DoctorDetailViewModel : ViewModel() {
     val doctorLD = MutableLiveData<Doctor>()
-    fun fetch(doctorName:String, doctorSpecialty:String, doctorAddress:String, doctorPhone:String, doctorPhotoUrl:String, doctorRating:Int) {
+    fun fetch(doctorName:String, doctorSpecialty:String, doctorAddress:String, doctorPhone:String, doctorPhotoUrl:String, doctorRating:String) {
         val doctorData = Doctor(doctorName, doctorSpecialty, doctorAddress, doctorPhone, doctorPhotoUrl, doctorRating)
         doctorLD.value = doctorData
     }

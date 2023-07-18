@@ -23,7 +23,7 @@ class DoctorsDetailFragment : Fragment() {
     var doctorAddress = ""
     var doctorPhone = ""
     var doctorPhotoUrl = ""
-    var doctorRating = 0
+    var doctorRating = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

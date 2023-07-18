@@ -17,7 +17,7 @@ data class Doctor(
     @ColumnInfo(name = "doctor_photo_url")
     var doctorPhotoUrl:String,
     @ColumnInfo(name = "doctor_rating")
-    var doctorRating:Int
+    var doctorRating:String
 ){
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0

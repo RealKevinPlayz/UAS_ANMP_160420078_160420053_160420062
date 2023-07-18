@@ -54,14 +54,16 @@ class DoctorListAdapter(var doctorList:ArrayList<Doctor>, var adapterOnClick : (
         }
         */
     }
+
+
+
+    override fun getItemCount(): Int {
+        return doctorList.size
+    }
+
     fun updateDoctorList(newDoctorList: List<Doctor>) {
         doctorList.clear()
         doctorList.addAll(newDoctorList)
         notifyDataSetChanged()
     }
-    override fun getItemCount(): Int {
-        return doctorList.size
-    }
-
-
 }
