@@ -66,7 +66,7 @@ fun buildHospitalDB(context: Context): HospitalsDatabase {
     var hospitalDb = Room.databaseBuilder(context, HospitalsDatabase::class.java, DB_HOSPITAL).build()
     return hospitalDb
 }
-@BindingAdapter("android:imageUrl", "android:progressBar")
+@BindingAdapter("android:imageUrl", "android:hospitalProgressBar")
 fun loadPhotoURL(view:ImageView, url:String, pb:ProgressBar){
     view.loadImage(url, pb)
 }

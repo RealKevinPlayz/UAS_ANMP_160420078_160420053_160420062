@@ -17,7 +17,7 @@ import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.util.loadImag
 
 import kotlinx.android.synthetic.main.medicine_list_item.view.*
 
-class MedicineListAdapter(var medicineList:ArrayList<Medicine>, var adapterOnClick : (Medicine) -> Unit) : RecyclerView.Adapter<MedicineListAdapter.MedicineViewHolder>() {
+class MedicineListAdapter(var medicineList:ArrayList<Medicine>, var adapterOnClick : (Medicine) -> Unit) : RecyclerView.Adapter<MedicineListAdapter.MedicineViewHolder>(), MedicineLayoutInterface {
     class MedicineViewHolder (var view: MedicineListItemBinding) : RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MedicineViewHolder {
@@ -31,8 +31,8 @@ class MedicineListAdapter(var medicineList:ArrayList<Medicine>, var adapterOnCli
         holder.view.medicine = medicineList[position]
         /*
         var imageView = holder.view.findViewById<ImageView>(R.id.medicineCardImage)
-        var progressBar = holder.view.findViewById<ProgressBar>(R.id.medicineCardProgressBar)
-        imageView.loadImage(medicineList[position].medicinePhotoUrl, progressBar)
+        var hospitalProgressBar = holder.view.findViewById<ProgressBar>(R.id.medicineCardProgressBar)
+        imageView.loadImage(medicineList[position].medicinePhotoUrl, hospitalProgressBar)
 
         holder.view.txtMedicineListName.text = medicineList[position].medicineName
         holder.view.txtMedicineDesc.text = medicineList[position].medicineDesc
@@ -55,6 +55,12 @@ class MedicineListAdapter(var medicineList:ArrayList<Medicine>, var adapterOnCli
     }
     override fun getItemCount(): Int {
         return medicineList.size
+    }
+
+    override fun onButtonDetailMedicineClick(v: View) {
+        var id = v.tag.toString()
+        //var action = MedicinesListFragmentDirections.actionMedicineDetail(id)
+        //Navigation.findNavController(v).navigate(action)
     }
 
 

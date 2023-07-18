@@ -9,4 +9,7 @@ interface DoctorDao {
 
     @Query("SELECT * FROM doctor")
     fun selectAllDoctor(): List<Doctor>
+
+    @Query("select * from doctor where id = :id")
+    fun selectDoctor(id: Int): Doctor
 }

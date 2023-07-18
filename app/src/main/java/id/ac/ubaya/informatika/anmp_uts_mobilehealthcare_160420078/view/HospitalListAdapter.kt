@@ -18,7 +18,7 @@ import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.util.loadImag
 
 import kotlinx.android.synthetic.main.hospital_list_item.view.*
 
-class HospitalListAdapter(var hospitalList:ArrayList<Hospital>, var adapterOnClick : (Hospital) -> Unit) : RecyclerView.Adapter<HospitalListAdapter.HospitalViewHolder>() {
+class HospitalListAdapter(var hospitalList:ArrayList<Hospital>, var adapterOnClick : (Hospital) -> Unit) : RecyclerView.Adapter<HospitalListAdapter.HospitalViewHolder>(), HospitalLayoutInterface {
     class HospitalViewHolder (var view: HospitalListItemBinding) : RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
@@ -33,8 +33,8 @@ class HospitalListAdapter(var hospitalList:ArrayList<Hospital>, var adapterOnCli
         holder.view.hospital = hospitalList[position]
         /*
         var imageView = holder.view.findViewById<ImageView>(R.id.hospitalCardImage)
-        var progressBar = holder.view.findViewById<ProgressBar>(R.id.hospitalCardProgressBar)
-        imageView.loadImage(hospitalList[position].hospitalPhotoUrl, progressBar)
+        var hospitalProgressBar = holder.view.findViewById<ProgressBar>(R.id.hospitalCardProgressBar)
+        imageView.loadImage(hospitalList[position].hospitalPhotoUrl, hospitalProgressBar)
         holder.view.lblHospitalCardName.text = hospitalList[position].hospitalName
         holder.view.lblHospitalCardRating.text = hospitalList[position].hospitalRating
         holder.view.btnHospitalDetail.setOnClickListener {
@@ -56,6 +56,12 @@ class HospitalListAdapter(var hospitalList:ArrayList<Hospital>, var adapterOnCli
     }
     override fun getItemCount(): Int {
         return hospitalList.size
+    }
+
+    override fun onButtonDetailHospitalClick(v: View) {
+        var id = v.tag.toString()
+        //var action = HospitalListFragmentDirections.actionHospitalDetail(id)
+        //Navigation.findNavController(v).navigate(action)
     }
 
 

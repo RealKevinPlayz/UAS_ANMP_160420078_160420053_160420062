@@ -20,25 +20,7 @@
         android:label="Detail Dokter">
         <argument
             android:name="id"
-            app:argType="string" />
-        <argument
-            android:name="doctorName"
-            app:argType="string" />
-        <argument
-            android:name="doctorSpecialty"
-            app:argType="string" />
-        <argument
-            android:name="doctorAddress"
-            app:argType="string" />
-        <argument
-            android:name="doctorPhone"
-            app:argType="string" />
-        <argument
-            android:name="doctorPhotoUrl"
-            app:argType="string" />
-        <argument
-            android:name="doctorRating"
-            app:argType="string" />
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/itemHospital"
@@ -54,25 +36,7 @@
         android:label="Detail Rumah Sakit">
         <argument
             android:name="id"
-            app:argType="string" />
-        <argument
-            android:name="hospitalName"
-            app:argType="string" />
-        <argument
-            android:name="hospitalWebsite"
-            app:argType="string" />
-        <argument
-            android:name="hospitalAddress"
-            app:argType="string" />
-        <argument
-            android:name="hospitalPhone"
-            app:argType="string" />
-        <argument
-            android:name="hospitalPhotoUrl"
-            app:argType="string" />
-        <argument
-            android:name="hospitalRating"
-            app:argType="string" />
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/itemMedicine"
@@ -88,25 +52,7 @@
         android:label="Detail Obat">
         <argument
             android:name="id"
-            app:argType="string" />
-        <argument
-            android:name="medicineName"
-            app:argType="string" />
-        <argument
-            android:name="medicineDesc"
-            app:argType="string" />
-        <argument
-            android:name="medicineDose"
-            app:argType="string" />
-        <argument
-            android:name="medicineComposition"
-            app:argType="string" />
-        <argument
-            android:name="medicineWarning"
-            app:argType="string" />
-        <argument
-            android:name="medicinePhotoUrl"
-            app:argType="string" />
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/itemPharmacy"
@@ -122,25 +68,7 @@
         android:label="PharmacyDetailFragment" >
         <argument
             android:name="id"
-            app:argType="string" />
-        <argument
-            android:name="pharmacyName"
-            app:argType="string" />
-        <argument
-            android:name="pharmacyOpeningHour"
-            app:argType="string" />
-        <argument
-            android:name="pharmacyAddress"
-            app:argType="string" />
-        <argument
-            android:name="pharmacyPhone"
-            app:argType="string" />
-        <argument
-            android:name="pharmacyPhotoUrl"
-            app:argType="string" />
-        <argument
-            android:name="pharmacyRating"
-            app:argType="string" />
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/itemHome"

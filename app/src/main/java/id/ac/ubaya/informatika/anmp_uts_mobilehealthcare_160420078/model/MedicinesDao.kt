@@ -12,4 +12,7 @@ interface MedicinesDao {
 
     @Query("SELECT * FROM medicine")
     fun selectAllMedicine(): List<Medicine>
+
+    @Query("select * from medicine where id = :id")
+    fun selectMedicine(id: Int): Medicine
 }
