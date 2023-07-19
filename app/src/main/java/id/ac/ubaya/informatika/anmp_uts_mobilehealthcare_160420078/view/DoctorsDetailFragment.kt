@@ -19,11 +19,11 @@ import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.databinding.F
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.viewmodel.DoctorDetailViewModel
 import kotlinx.android.synthetic.main.fragment_doctors_detail.*
 
-class DoctorsDetailFragment : Fragment() {
+class DoctorsDetailFragment : Fragment(), ButtonAppointmentLayoutInterface {
     private lateinit var viewModel: DoctorDetailViewModel
     private lateinit var dataBinding: FragmentDoctorsDetailBinding
 
-    var doctorId = ""
+    var doctorId = 0
     var doctorName = ""
     var doctorSpecialty = ""
     var doctorAddress = ""
@@ -45,22 +45,23 @@ class DoctorsDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if(arguments != null) {
-            doctorId = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).id
+            doctorId = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).id.toInt()
 //            doctorName = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorName
 //            doctorSpecialty = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorSpecialty
 //            doctorAddress = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorAddress
 //            doctorPhone = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorPhone
 //            doctorPhotoUrl = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorPhotoUrl
 //            doctorRating = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorRating
+            dataBinding.appointmentlistener = this
             var sharedFile = "id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078"
             var shared = this.requireActivity()
                 .getSharedPreferences(sharedFile, Context.MODE_PRIVATE)
             var editor: SharedPreferences.Editor = shared.edit();
-            editor.putString("doctorID", doctorId);
+            editor.putInt("doctorID", doctorId);
             editor.apply();
         }
         viewModel = ViewModelProvider(this).get(DoctorDetailViewModel::class.java)
-        viewModel.fetch(doctorId.toInt())
+        viewModel.fetch(doctorId)
         observeViewModel()
     }
 

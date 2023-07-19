@@ -25,3 +25,22 @@ interface ButtonDetailLayoutInterface{
         Navigation.findNavController(v).navigate(action)
     }
 }
+
+interface ButtonAppointmentLayoutInterface{
+    fun onButtonAppointmentClick(v:View){
+        var action = DoctorsDetailFragmentDirections.actionAppointmentFragment()
+        Navigation.findNavController(v).navigate(action)
+    }
+}
+
+interface DateListener{
+    fun onDateClick(v: View)
+}
+
+interface TimeListener{
+    fun onTimeClick(v: View)
+}
+
+interface AppointmentLayoutInterface{
+    fun onButtonBooking(v: View)
+}

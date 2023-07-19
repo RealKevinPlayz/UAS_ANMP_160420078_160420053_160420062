@@ -1,107 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.AppointmentFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+        <variable
+            name="schedule"
+            type="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.Schedule" />
+        <variable
+            name="bookinglistener"
+            type="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.AppointmentLayoutInterface" />
+        <variable
+            name="datelistener"
+            type="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.DateListener" />
+        <variable
+            name="timelistener"
+            type="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.TimeListener" />
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".view.AppointmentFragment">
 
-        <TextView
-            android:id="@+id/txtDoctorID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:text="Doctor ID : -"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <!-- TODO: Update blank fragment layout -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/txtDoctorName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Doctor Name : -"
-            app:layout_constraintStart_toStartOf="@+id/txtDoctorID"
-            app:layout_constraintTop_toBottomOf="@+id/txtDoctorID" />
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Date"
-            app:layout_constraintStart_toStartOf="@+id/txtDoctorName"
-            app:layout_constraintTop_toBottomOf="@+id/txtDoctorName" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputLayoutDate"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            app:endIconDrawable="@drawable/ic_baseline_calendar_today_24"
-            app:endIconMode="custom"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView10"
-            app:layout_constraintTop_toBottomOf="@+id/textView10">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtDate"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/txtDoctorID"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:enabled="true"
-                android:focusable="false"
-                android:hint="Select Date" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Doctor ID : -"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Time"
-            app:layout_constraintStart_toStartOf="@+id/inputLayoutDate"
-            app:layout_constraintTop_toBottomOf="@+id/inputLayoutDate" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputLayoutTime"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:endIconDrawable="@drawable/ic_baseline_access_time_24"
-            app:endIconMode="custom"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:layout_constraintEnd_toEndOf="@+id/inputLayoutDate"
-            app:layout_constraintStart_toStartOf="@+id/textView11"
-            app:layout_constraintTop_toBottomOf="@+id/textView11">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtTime"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/txtDoctorName"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:enabled="true"
-                android:focusable="false"
-                android:hint="Select Time" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="20dp"
+                android:text="Doctor Name : -"
+                app:layout_constraintStart_toStartOf="@+id/txtDoctorID"
+                app:layout_constraintTop_toBottomOf="@+id/txtDoctorID" />
 
-        <Button
-            android:id="@+id/btnBooking"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Booking"
-            app:layout_constraintEnd_toEndOf="@+id/inputLayoutTime"
-            app:layout_constraintTop_toBottomOf="@+id/inputLayoutTime" />
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Date"
+                app:layout_constraintStart_toStartOf="@+id/txtDoctorName"
+                app:layout_constraintTop_toBottomOf="@+id/txtDoctorName" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutDate"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                app:endIconDrawable="@drawable/ic_baseline_calendar_today_24"
+                app:endIconMode="custom"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView10"
+                app:layout_constraintTop_toBottomOf="@+id/textView10">
 
-</FrameLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{datelistener::onDateClick}"
+                    android:enabled="true"
+                    android:focusable="false"
+                    android:hint="Select Date" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Time"
+                app:layout_constraintStart_toStartOf="@+id/inputLayoutDate"
+                app:layout_constraintTop_toBottomOf="@+id/inputLayoutDate" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutTime"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:endIconDrawable="@drawable/ic_baseline_access_time_24"
+                app:endIconMode="custom"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:layout_constraintEnd_toEndOf="@+id/inputLayoutDate"
+                app:layout_constraintStart_toStartOf="@+id/textView11"
+                app:layout_constraintTop_toBottomOf="@+id/textView11">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{timelistener::onTimeClick}"
+                    android:enabled="true"
+                    android:focusable="false"
+                    android:hint="Select Time" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnBooking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="@{bookinglistener::onButtonBooking}"
+                android:text="Booking"
+                app:layout_constraintEnd_toEndOf="@+id/inputLayoutTime"
+                app:layout_constraintTop_toBottomOf="@+id/inputLayoutDescription" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Description"
+                app:layout_constraintStart_toStartOf="@+id/inputLayoutTime"
+                app:layout_constraintTop_toBottomOf="@+id/inputLayoutTime" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/inputLayoutDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="@+id/inputLayoutTime"
+                app:layout_constraintStart_toStartOf="@+id/textView9"
+                app:layout_constraintTop_toBottomOf="@+id/textView9">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Description" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>
