@@ -21,6 +21,9 @@
         <argument
             android:name="id"
             app:argType="string" />
+        <action
+            android:id="@+id/action_doctorsDetailFragment_to_appointmentFragment"
+            app:destination="@id/appointmentFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemHospital"
@@ -75,4 +78,9 @@
         android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/appointmentFragment"
+        android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.AppointmentFragment"
+        android:label="fragment_appointment"
+        tools:layout="@layout/fragment_appointment" />
 </navigation>

@@ -1,6 +1,8 @@
 package id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.database.Observable
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -51,8 +53,14 @@ class SignInFragment : Fragment() {
                 .subscribe {
                     login = viewModel.fetch(txtUsername.text.toString(), txtPassword.text.toString())
                     Log.e("login check", login.toString())
-                    if(login){
+                    if(login != null){
                         var intent = Intent(activity, MainActivity::class.java)
+                        var sharedFile = "id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078"
+                        var shared = this.requireActivity()
+                            .getSharedPreferences(sharedFile, Context.MODE_PRIVATE)
+                        var editor: SharedPreferences.Editor = shared.edit();
+                        editor.putInt("userID", login);
+                        editor.apply();
                         startActivity(intent)
                     }
                     else{

@@ -1,5 +1,7 @@
 package id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -50,6 +52,12 @@ class DoctorsDetailFragment : Fragment() {
 //            doctorPhone = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorPhone
 //            doctorPhotoUrl = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorPhotoUrl
 //            doctorRating = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorRating
+            var sharedFile = "id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078"
+            var shared = this.requireActivity()
+                .getSharedPreferences(sharedFile, Context.MODE_PRIVATE)
+            var editor: SharedPreferences.Editor = shared.edit();
+            editor.putString("doctorID", doctorId);
+            editor.apply();
         }
         viewModel = ViewModelProvider(this).get(DoctorDetailViewModel::class.java)
         viewModel.fetch(doctorId.toInt())
@@ -64,6 +72,12 @@ class DoctorsDetailFragment : Fragment() {
 //            lblDoctorDetailTelpon.text = "Telepon : " + it.doctorPhone.toString()
 //            lblDoctorDetailRating.text = it.doctorRating.toString()
             dataBinding.doctor = it
+            var sharedFile = "id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078"
+            var shared = this.requireActivity()
+                .getSharedPreferences(sharedFile, Context.MODE_PRIVATE)
+            var editor: SharedPreferences.Editor = shared.edit();
+            editor.putString("doctorName", it.doctorName);
+            editor.apply();
             Picasso.get()
                 .load(it.doctorPhotoUrl)
                 .into(imgDoctorsDetail)

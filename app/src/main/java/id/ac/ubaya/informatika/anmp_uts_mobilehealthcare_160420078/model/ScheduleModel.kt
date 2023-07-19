@@ -9,7 +9,7 @@ data class Schedule(
     @ColumnInfo(name = "user_id")
     var user_id: Int,
     @ColumnInfo(name = "doctor_id")
-    var doctor_id: Int,
+    var doctor_id: String,
     @ColumnInfo(name = "date")
     var date: Int,
     @ColumnInfo(name = "description")
