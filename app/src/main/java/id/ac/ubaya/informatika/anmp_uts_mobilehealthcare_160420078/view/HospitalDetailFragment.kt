@@ -5,15 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.squareup.picasso.Picasso
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.R
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.databinding.FragmentDoctorsDetailBinding
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.databinding.FragmentHospitalDetailBinding
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.viewmodel.HospitalDetailViewModel
 import kotlinx.android.synthetic.main.fragment_hospital_detail.*
 
 class HospitalDetailFragment : Fragment() {
     private lateinit var viewModel: HospitalDetailViewModel
+    private lateinit var dataBinding: FragmentHospitalDetailBinding
     var hospitalId = ""
     var hospitalName = ""
     var hospitalWebsite = ""
@@ -28,7 +32,10 @@ class HospitalDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_hospital_detail, container, false)
+        //return inflater.inflate(R.layout.fragment_doctors_detail, container, false)
+        dataBinding = DataBindingUtil.inflate<FragmentHospitalDetailBinding>(inflater,
+            R.layout.fragment_hospital_detail, container, false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,11 +56,12 @@ class HospitalDetailFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel.hospitalLD.observe(viewLifecycleOwner, Observer {
-            lblHospitalDetailName.text = it.hospitalName.toString()
-            lblHospitalDetailWebsite.text = it.hospitalWebsite.toString()
-            lblHospitalDetailAlamat.text = it.hospitalAddress.toString()
-            lblHospitalDetailTelpon.text = it.hospitalPhone.toString()
-            lblHospitalDetailRating.text = it.hospitalRating.toString()
+            dataBinding.hospital = it
+//            lblHospitalDetailName.text = it.hospitalName.toString()
+//            lblHospitalDetailWebsite.text = it.hospitalWebsite.toString()
+//            lblHospitalDetailAlamat.text = it.hospitalAddress.toString()
+//            lblHospitalDetailTelpon.text = it.hospitalPhone.toString()
+//            lblHospitalDetailRating.text = it.hospitalRating.toString()
 
             Picasso.get()
                 .load(it.hospitalPhotoUrl)

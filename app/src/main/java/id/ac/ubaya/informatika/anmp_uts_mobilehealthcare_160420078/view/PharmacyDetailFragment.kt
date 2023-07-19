@@ -5,10 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.squareup.picasso.Picasso
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.R
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.databinding.FragmentHospitalDetailBinding
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.databinding.FragmentPharmacyDetailBinding
 
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.viewmodel.PharmacyDetailViewModel
 
@@ -17,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_pharmacy_detail.*
 
 class PharmacyDetailFragment : Fragment() {
     private lateinit var viewModel: PharmacyDetailViewModel
+    private lateinit var dataBinding: FragmentPharmacyDetailBinding
     var pharmacyId = ""
     var pharmacyName = ""
     var pharmacyOpeningHour = ""
@@ -31,7 +35,10 @@ class PharmacyDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pharmacy_detail, container, false)
+        //return inflater.inflate(R.layout.fragment_doctors_detail, container, false)
+        dataBinding = DataBindingUtil.inflate<FragmentPharmacyDetailBinding>(inflater,
+            R.layout.fragment_pharmacy_detail, container, false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,11 +59,12 @@ class PharmacyDetailFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel.pharmacyLD.observe(viewLifecycleOwner, Observer {
-            lblPharmacyDetailName.text = it.pharmacyName.toString()
-            lblPharmacyDetailOpeningHour.text = "Jam Buka : " + it.pharmacyOpeningHour.toString()
-            lblPharmacyDetailAlamat.text = "Alamat : " + it.pharmacyAddress.toString()
-            lblPharmacyDetailTelpon.text = "Telepon : " + it.pharmacyPhone.toString()
-            lblPharmacyDetailRating.text = it.pharmacyRating.toString()
+            dataBinding.pharmacy = it
+//            lblPharmacyDetailName.text = it.pharmacyName.toString()
+//            lblPharmacyDetailOpeningHour.text = "Jam Buka : " + it.pharmacyOpeningHour.toString()
+//            lblPharmacyDetailAlamat.text = "Alamat : " + it.pharmacyAddress.toString()
+//            lblPharmacyDetailTelpon.text = "Telepon : " + it.pharmacyPhone.toString()
+//            lblPharmacyDetailRating.text = it.pharmacyRating.toString()
 
             Picasso.get()
                 .load(it.pharmacyPhotoUrl)

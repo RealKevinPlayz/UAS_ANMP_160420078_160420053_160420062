@@ -1,93 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".PharmacyDetailFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+        <variable
+            name="pharmacy"
+            type="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.Pharmacy" />
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".PharmacyDetailFragment">
 
-        <ImageView
-            android:id="@+id/imgPharmacyDetail"
-            android:layout_width="0dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/lblPharmacyDetailName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Pharmacy"
-            android:textColor="#000000"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgPharmacyDetail" />
+            <ImageView
+                android:id="@+id/imgPharmacyDetail"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
 
-        <TextView
-            android:id="@+id/lblPharmacyDetailAlamat"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblPharmacyDetailOpeningHour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Alamat"
-            android:textColor="#000000"
-            android:textSize="18sp" />
+            <TextView
+                android:id="@+id/lblPharmacyDetailName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@{pharmacy.pharmacyName}"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgPharmacyDetail" />
 
-        <TextView
-            android:id="@+id/lblPharmacyDetailOpeningHour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="24 Jam"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblPharmacyDetailName" />
+            <TextView
+                android:id="@+id/lblPharmacyDetailAlamat"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblPharmacyDetailOpeningHour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{pharmacy.pharmacyAddress}"
+                android:textColor="#000000"
+                android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/lblPharmacyDetailTelpon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblPharmacyDetailAlamat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="0000-0000-0000"
-            android:textColor="#000000"
-            android:textSize="18sp" />
+            <TextView
+                android:id="@+id/lblPharmacyDetailOpeningHour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{pharmacy.pharmacyOpeningHour}"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblPharmacyDetailName" />
 
-        <TextView
-            android:id="@+id/lblPharmacyDetailRating"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblPharmacyDetailTelpon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="190dp"
-            android:text="5"
-            android:textColor="#000000"
-            android:textSize="18sp" />
+            <TextView
+                android:id="@+id/lblPharmacyDetailTelpon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblPharmacyDetailAlamat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{pharmacy.pharmacyPhone}"
+                android:textColor="#000000"
+                android:textSize="18sp" />
 
-        <ImageView
-            android:id="@+id/imageView3"
-            app:layout_constraintEnd_toStartOf="@+id/lblPharmacyDetailRating"
-            app:layout_constraintTop_toBottomOf="@+id/lblPharmacyDetailTelpon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/rating" />
+            <TextView
+                android:id="@+id/lblPharmacyDetailRating"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblPharmacyDetailTelpon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="190dp"
+                android:text="@{pharmacy.pharmacyRating}"
+                android:textColor="#000000"
+                android:textSize="18sp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+            <ImageView
+                android:id="@+id/imageView3"
+                app:layout_constraintEnd_toStartOf="@+id/lblPharmacyDetailRating"
+                app:layout_constraintTop_toBottomOf="@+id/lblPharmacyDetailTelpon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/rating" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

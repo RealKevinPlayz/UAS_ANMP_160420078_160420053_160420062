@@ -1,95 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HospitalDetailFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+        <variable
+            name="hospital"
+            type="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.Hospital" />
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".HospitalDetailFragment">
 
-        <ImageView
-            android:id="@+id/imgHospitalDetail"
-            android:layout_width="0dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/lblHospitalDetailName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Hospital"
-            android:textColor="#000000"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgHospitalDetail" />
+            <ImageView
+                android:id="@+id/imgHospitalDetail"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
 
-        <TextView
-            android:id="@+id/lblHospitalDetailAlamat"
-            android:layout_width="360dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Alamat"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblHospitalDetailWebsite" />
+            <TextView
+                android:id="@+id/lblHospitalDetailName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@{hospital.hospitalName}"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgHospitalDetail" />
 
-        <TextView
-            android:id="@+id/lblHospitalDetailWebsite"
-            android:layout_width="360dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Website"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblHospitalDetailName" />
+            <TextView
+                android:id="@+id/lblHospitalDetailAlamat"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{hospital.hospitalAddress}"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblHospitalDetailWebsite" />
 
-        <TextView
-            android:id="@+id/lblHospitalDetailTelpon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblHospitalDetailAlamat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="0000-0000-0000"
-            android:textColor="#000000"
-            android:textSize="18sp" />
+            <TextView
+                android:id="@+id/lblHospitalDetailWebsite"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{hospital.hospitalWebsite}"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblHospitalDetailName" />
 
-        <TextView
-            android:id="@+id/lblHospitalDetailRating"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblHospitalDetailTelpon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="190dp"
-            android:text="5"
-            android:textColor="#000000"
-            android:textSize="18sp" />
+            <TextView
+                android:id="@+id/lblHospitalDetailTelpon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblHospitalDetailAlamat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{hospital.hospitalPhone}"
+                android:textColor="#000000"
+                android:textSize="18sp" />
 
-        <ImageView
-            android:id="@+id/imageView3"
-            app:layout_constraintEnd_toStartOf="@+id/lblHospitalDetailRating"
-            app:layout_constraintTop_toBottomOf="@+id/lblHospitalDetailTelpon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/rating" />
+            <TextView
+                android:id="@+id/lblHospitalDetailRating"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblHospitalDetailTelpon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="190dp"
+                android:text="@{hospital.hospitalRating}"
+                android:textColor="#000000"
+                android:textSize="18sp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+            <ImageView
+                android:id="@+id/imageView3"
+                app:layout_constraintEnd_toStartOf="@+id/lblHospitalDetailRating"
+                app:layout_constraintTop_toBottomOf="@+id/lblHospitalDetailTelpon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/rating" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

@@ -7,17 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ProgressBar
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.R
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.databinding.FragmentDoctorsDetailBinding
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.viewmodel.DoctorDetailViewModel
 import kotlinx.android.synthetic.main.fragment_doctors_detail.*
 
 class DoctorsDetailFragment : Fragment() {
     private lateinit var viewModel: DoctorDetailViewModel
-
+    private lateinit var dataBinding: FragmentDoctorsDetailBinding
 
     var doctorId = ""
     var doctorName = ""
@@ -32,7 +34,10 @@ class DoctorsDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_doctors_detail, container, false)
+        //return inflater.inflate(R.layout.fragment_doctors_detail, container, false)
+        dataBinding = DataBindingUtil.inflate<FragmentDoctorsDetailBinding>(inflater,
+            R.layout.fragment_doctors_detail, container, false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -53,12 +58,12 @@ class DoctorsDetailFragment : Fragment() {
 
     fun observeViewModel() {
         viewModel.doctorLD.observe(viewLifecycleOwner, Observer {
-            lblDoctorDetailName.text = it.doctorName.toString()
-            lblDoctorDetailSpeciality.text = it.doctorSpecialty.toString()
-            lblDoctorDetailAlamat.text = "Alamat Praktek : " + it.doctorAddress.toString()
-            lblDoctorDetailTelpon.text = "Telepon : " + it.doctorPhone.toString()
-            lblDoctorDetailRating.text = it.doctorRating.toString()
-
+//            lblDoctorDetailName.text = it.doctorName.toString()
+//            lblDoctorDetailSpeciality.text = it.doctorSpecialty.toString()
+//            lblDoctorDetailAlamat.text = "Alamat Praktek : " + it.doctorAddress.toString()
+//            lblDoctorDetailTelpon.text = "Telepon : " + it.doctorPhone.toString()
+//            lblDoctorDetailRating.text = it.doctorRating.toString()
+            dataBinding.doctor = it
             Picasso.get()
                 .load(it.doctorPhotoUrl)
                 .into(imgDoctorsDetail)
