@@ -7,6 +7,10 @@
         <variable
             name="doctor"
             type="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.Doctor" />
+
+        <variable
+            name="btnListener"
+            type="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.ButtonDetailLayoutInterface" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -73,6 +77,8 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="Detail"
+                    android:tag="@{doctor.id}"
+                    android:onClick="@{btnListener::onDoctorButtonDetailClick}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 

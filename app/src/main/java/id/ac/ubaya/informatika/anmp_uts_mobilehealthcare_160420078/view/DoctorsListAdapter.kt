@@ -14,7 +14,8 @@ import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.Doctor
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.util.loadImage
 import kotlinx.android.synthetic.main.doctors_list_item.view.*
 
-class DoctorListAdapter(var doctorList:ArrayList<Doctor>, var adapterOnClick : (Doctor) -> Unit) : RecyclerView.Adapter<DoctorListAdapter.DoctorViewHolder>() {
+class DoctorListAdapter(var doctorList:ArrayList<Doctor>, var adapterOnClick : (Doctor) -> Unit) : RecyclerView.Adapter<DoctorListAdapter.DoctorViewHolder>(),
+ButtonDetailLayoutInterface{
     class DoctorViewHolder (var view: DoctorsListItemBinding) : RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DoctorViewHolder {
@@ -26,6 +27,7 @@ class DoctorListAdapter(var doctorList:ArrayList<Doctor>, var adapterOnClick : (
 
     override fun onBindViewHolder(holder: DoctorViewHolder, position: Int) {
         holder.view.doctor = doctorList[position]
+        holder.view.btnListener = this
         //var imageView = holder.view.findViewById<ImageView>(R.id.doctorCardImage)
         //var progressBar = holder.view.findViewById<ProgressBar>(R.id.doctorCardProgressBar)
         //imageView.loadImage(doctorList[position].doctorPhotoUrl, progressBar)

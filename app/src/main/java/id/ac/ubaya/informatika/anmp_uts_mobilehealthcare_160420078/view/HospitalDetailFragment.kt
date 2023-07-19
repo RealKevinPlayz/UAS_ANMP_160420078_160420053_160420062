@@ -35,15 +35,15 @@ class HospitalDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if(arguments != null) {
             hospitalId = HospitalDetailFragmentArgs.fromBundle(requireArguments()).id
-            hospitalName = HospitalDetailFragmentArgs.fromBundle(requireArguments()).hospitalName
-            hospitalWebsite = HospitalDetailFragmentArgs.fromBundle(requireArguments()).hospitalWebsite
-            hospitalAddress = HospitalDetailFragmentArgs.fromBundle(requireArguments()).hospitalAddress
-            hospitalPhone = HospitalDetailFragmentArgs.fromBundle(requireArguments()).hospitalPhone
-            hospitalPhotoUrl = HospitalDetailFragmentArgs.fromBundle(requireArguments()).hospitalPhotoUrl
-            hospitalRating = HospitalDetailFragmentArgs.fromBundle(requireArguments()).hospitalRating
+//            hospitalName = HospitalDetailFragmentArgs.fromBundle(requireArguments()).hospitalName
+//            hospitalWebsite = HospitalDetailFragmentArgs.fromBundle(requireArguments()).hospitalWebsite
+//            hospitalAddress = HospitalDetailFragmentArgs.fromBundle(requireArguments()).hospitalAddress
+//            hospitalPhone = HospitalDetailFragmentArgs.fromBundle(requireArguments()).hospitalPhone
+//            hospitalPhotoUrl = HospitalDetailFragmentArgs.fromBundle(requireArguments()).hospitalPhotoUrl
+//            hospitalRating = HospitalDetailFragmentArgs.fromBundle(requireArguments()).hospitalRating
         }
         viewModel = ViewModelProvider(this).get(HospitalDetailViewModel::class.java)
-        viewModel.fetch(hospitalId, hospitalName, hospitalWebsite, hospitalAddress, hospitalPhone, hospitalPhotoUrl, hospitalRating)
+        viewModel.fetch(hospitalId.toInt())
         observeViewModel()
     }
 

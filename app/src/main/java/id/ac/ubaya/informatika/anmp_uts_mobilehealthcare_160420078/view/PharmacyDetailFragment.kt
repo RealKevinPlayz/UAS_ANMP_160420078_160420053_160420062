@@ -38,15 +38,15 @@ class PharmacyDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if(arguments != null) {
             pharmacyId = PharmacyDetailFragmentArgs.fromBundle(requireArguments()).id
-            pharmacyName = PharmacyDetailFragmentArgs.fromBundle(requireArguments()).pharmacyName
-            pharmacyOpeningHour = PharmacyDetailFragmentArgs.fromBundle(requireArguments()).pharmacyOpeningHour
-            pharmacyAddress = PharmacyDetailFragmentArgs.fromBundle(requireArguments()).pharmacyAddress
-            pharmacyPhone = PharmacyDetailFragmentArgs.fromBundle(requireArguments()).pharmacyPhone
-            pharmacyPhotoUrl = PharmacyDetailFragmentArgs.fromBundle(requireArguments()).pharmacyPhotoUrl
-            pharmacyRating = PharmacyDetailFragmentArgs.fromBundle(requireArguments()).pharmacyRating
+//            pharmacyName = PharmacyDetailFragmentArgs.fromBundle(requireArguments()).pharmacyName
+//            pharmacyOpeningHour = PharmacyDetailFragmentArgs.fromBundle(requireArguments()).pharmacyOpeningHour
+//            pharmacyAddress = PharmacyDetailFragmentArgs.fromBundle(requireArguments()).pharmacyAddress
+//            pharmacyPhone = PharmacyDetailFragmentArgs.fromBundle(requireArguments()).pharmacyPhone
+//            pharmacyPhotoUrl = PharmacyDetailFragmentArgs.fromBundle(requireArguments()).pharmacyPhotoUrl
+//            pharmacyRating = PharmacyDetailFragmentArgs.fromBundle(requireArguments()).pharmacyRating
         }
         viewModel = ViewModelProvider(this).get(PharmacyDetailViewModel::class.java)
-        viewModel.fetch(pharmacyName, pharmacyOpeningHour, pharmacyAddress, pharmacyPhone, pharmacyPhotoUrl, pharmacyRating)
+        viewModel.fetch(pharmacyId.toInt())
         observeViewModel()
     }
 

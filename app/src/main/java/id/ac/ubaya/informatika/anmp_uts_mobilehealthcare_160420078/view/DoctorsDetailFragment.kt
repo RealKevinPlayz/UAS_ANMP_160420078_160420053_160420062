@@ -17,6 +17,8 @@ import kotlinx.android.synthetic.main.fragment_doctors_detail.*
 
 class DoctorsDetailFragment : Fragment() {
     private lateinit var viewModel: DoctorDetailViewModel
+
+
     var doctorId = ""
     var doctorName = ""
     var doctorSpecialty = ""
@@ -37,15 +39,15 @@ class DoctorsDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if(arguments != null) {
             doctorId = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).id
-            doctorName = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorName
-            doctorSpecialty = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorSpecialty
-            doctorAddress = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorAddress
-            doctorPhone = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorPhone
-            doctorPhotoUrl = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorPhotoUrl
-            doctorRating = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorRating
+//            doctorName = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorName
+//            doctorSpecialty = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorSpecialty
+//            doctorAddress = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorAddress
+//            doctorPhone = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorPhone
+//            doctorPhotoUrl = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorPhotoUrl
+//            doctorRating = DoctorsDetailFragmentArgs.fromBundle(requireArguments()).doctorRating
         }
         viewModel = ViewModelProvider(this).get(DoctorDetailViewModel::class.java)
-        viewModel.fetch(doctorName, doctorSpecialty, doctorAddress, doctorPhone, doctorPhotoUrl, doctorRating)
+        viewModel.fetch(doctorId.toInt())
         observeViewModel()
     }
 

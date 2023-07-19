@@ -37,15 +37,15 @@ class MedicinesDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if(arguments != null) {
             medicineId = MedicinesDetailFragmentArgs.fromBundle(requireArguments()).id
-            medicineName = MedicinesDetailFragmentArgs.fromBundle(requireArguments()).medicineName
-            medicineDesc = MedicinesDetailFragmentArgs.fromBundle(requireArguments()).medicineDesc
-            medicineDose = MedicinesDetailFragmentArgs.fromBundle(requireArguments()).medicineDose
-            medicineComposition = MedicinesDetailFragmentArgs.fromBundle(requireArguments()).medicineComposition
-            medicineWarning = MedicinesDetailFragmentArgs.fromBundle(requireArguments()).medicineWarning
-            medicinePhotoUrl = MedicinesDetailFragmentArgs.fromBundle(requireArguments()).medicinePhotoUrl
+//            medicineName = MedicinesDetailFragmentArgs.fromBundle(requireArguments()).medicineName
+//            medicineDesc = MedicinesDetailFragmentArgs.fromBundle(requireArguments()).medicineDesc
+//            medicineDose = MedicinesDetailFragmentArgs.fromBundle(requireArguments()).medicineDose
+//            medicineComposition = MedicinesDetailFragmentArgs.fromBundle(requireArguments()).medicineComposition
+//            medicineWarning = MedicinesDetailFragmentArgs.fromBundle(requireArguments()).medicineWarning
+//            medicinePhotoUrl = MedicinesDetailFragmentArgs.fromBundle(requireArguments()).medicinePhotoUrl
         }
         viewModel = ViewModelProvider(this).get(MedicineDetailViewModel::class.java)
-        viewModel.fetch(medicineName, medicineDesc, medicineDose, medicineComposition, medicineWarning, medicinePhotoUrl)
+        viewModel.fetch(medicineId.toInt())
         observeViewModel()
     }
 

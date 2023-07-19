@@ -18,7 +18,8 @@ import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.util.loadImag
 
 import kotlinx.android.synthetic.main.hospital_list_item.view.*
 
-class HospitalListAdapter(var hospitalList:ArrayList<Hospital>, var adapterOnClick : (Hospital) -> Unit) : RecyclerView.Adapter<HospitalListAdapter.HospitalViewHolder>() {
+class HospitalListAdapter(var hospitalList:ArrayList<Hospital>, var adapterOnClick : (Hospital) -> Unit) : RecyclerView.Adapter<HospitalListAdapter.HospitalViewHolder>(),
+ButtonDetailLayoutInterface{
     class HospitalViewHolder (var view: HospitalListItemBinding) : RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
@@ -31,6 +32,7 @@ class HospitalListAdapter(var hospitalList:ArrayList<Hospital>, var adapterOnCli
 
     override fun onBindViewHolder(holder: HospitalViewHolder, position: Int) {
         holder.view.hospital = hospitalList[position]
+        holder.view.btnListener = this
         /*
         var imageView = holder.view.findViewById<ImageView>(R.id.hospitalCardImage)
         var progressBar = holder.view.findViewById<ProgressBar>(R.id.hospitalCardProgressBar)

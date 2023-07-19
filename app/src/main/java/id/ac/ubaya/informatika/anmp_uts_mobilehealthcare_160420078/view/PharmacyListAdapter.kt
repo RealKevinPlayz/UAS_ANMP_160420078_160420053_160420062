@@ -14,7 +14,8 @@ import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.util.loadImag
 import kotlinx.android.synthetic.main.hospital_list_item.view.*
 import kotlinx.android.synthetic.main.pharmacy_list_item.view.*
 
-class PharmacyListAdapter(var pharmacyList:ArrayList<Pharmacy>, var adapterOnClick : (Pharmacy) -> Unit) : RecyclerView.Adapter<PharmacyListAdapter.PharmacyViewHolder>() {
+class PharmacyListAdapter(var pharmacyList:ArrayList<Pharmacy>, var adapterOnClick : (Pharmacy) -> Unit) : RecyclerView.Adapter<PharmacyListAdapter.PharmacyViewHolder>() ,
+    ButtonDetailLayoutInterface{
     class PharmacyViewHolder (var view: PharmacyListItemBinding) : RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
@@ -28,6 +29,7 @@ class PharmacyListAdapter(var pharmacyList:ArrayList<Pharmacy>, var adapterOnCli
 
     override fun onBindViewHolder(holder: PharmacyViewHolder, position: Int) {
         holder.view.pharmacy = pharmacyList[position]
+        holder.view.btnListener = this
         /*
         var imageView = holder.view.findViewById<ImageView>(R.id.pharmacyCardImage)
         var progressBar = holder.view.findViewById<ProgressBar>(R.id.pharmacyCardProgressBar)

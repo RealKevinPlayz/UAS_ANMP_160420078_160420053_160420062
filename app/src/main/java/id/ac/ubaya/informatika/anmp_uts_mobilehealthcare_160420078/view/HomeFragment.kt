@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_doctors_list.*
 import kotlinx.android.synthetic.main.fragment_doctors_list.refreshLayout
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : Fragment(), ArticleLayoutInterface {
+class HomeFragment : Fragment(), ButtonDetailLayoutInterface {
     private lateinit var viewModel: ArticleListViewModel
     private var articleListAdapter = ArticleListAdapter(arrayListOf(), { item -> viewModel.clearTaskArticle(item) })
 
