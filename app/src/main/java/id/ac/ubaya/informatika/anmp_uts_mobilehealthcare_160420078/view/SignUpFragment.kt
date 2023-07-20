@@ -38,7 +38,7 @@ class SignUpFragment() : Fragment() {
             var textPassword = view.findViewById<EditText>(R.id.textPassword)
             var user = User(textUsername.text.toString(), textFirstName.text.toString(), textLastName.text.toString(), textPassword.text.toString())
             viewModel.addUser(user)
-            Toast.makeText(view.context, "Data added", Toast.LENGTH_LONG).show()
+            Toast.makeText(view.context, "User Data added", Toast.LENGTH_LONG).show()
             val action = SignUpFragmentDirections.signUpToSignIn()
             Navigation.findNavController(it).navigate(action)
         }

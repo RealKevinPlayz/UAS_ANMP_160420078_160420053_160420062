@@ -17,7 +17,7 @@ import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.Doctor
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.util.loadImage
 import kotlinx.android.synthetic.main.doctors_list_item.view.*
 
-class ArticleListAdapter(var articleList:ArrayList<Article>, var adapterOnClick : (Article) -> Unit) : RecyclerView.Adapter<ArticleListAdapter.ArticleViewHolder>() {
+class ArticleListAdapter(var articleList:ArrayList<Article>) : RecyclerView.Adapter<ArticleListAdapter.ArticleViewHolder>() {
     class ArticleViewHolder(var view: ArticleListItemBinding): RecyclerView.ViewHolder(view.root)
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {

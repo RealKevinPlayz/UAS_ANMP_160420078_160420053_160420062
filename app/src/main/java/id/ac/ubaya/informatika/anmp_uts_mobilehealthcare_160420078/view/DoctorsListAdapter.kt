@@ -29,7 +29,6 @@ ButtonDetailLayoutInterface{
     override fun onBindViewHolder(holder: DoctorViewHolder, position: Int) {
         holder.view.doctor = doctorList[position]
         holder.view.btnListener = this
-        Log.wtf("Doctor Data Name", doctorList[position].doctorName.toString())
         //var imageView = holder.view.findViewById<ImageView>(R.id.doctorCardImage)
         //var progressBar = holder.view.findViewById<ProgressBar>(R.id.doctorCardProgressBar)
         //imageView.loadImage(doctorList[position].doctorPhotoUrl, progressBar)

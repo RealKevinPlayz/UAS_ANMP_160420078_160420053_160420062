@@ -38,6 +38,20 @@ class SignInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        var sharedFile = "id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078"
+        var shared = this.requireActivity()
+            .getSharedPreferences(sharedFile, Context.MODE_PRIVATE)
+        var editor: SharedPreferences.Editor = shared.edit();
+        var userID = shared.getInt("userID", 0)
+
+        if(userID != 0){
+            var intent = Intent(activity, MainActivity::class.java)
+            editor.putInt("userID", userID)
+            //Log.wtf("current logged user", userID.toString())
+            editor.apply()
+            startActivity(intent)
+        }
+
         buttonRegister.setOnClickListener {
             val action = SignInFragmentDirections.signInToSignUp()
             Navigation.findNavController(it).navigate(action)
@@ -47,51 +61,28 @@ class SignInFragment : Fragment() {
             var txtPassword = view.findViewById<EditText>(R.id.txtPassword)
             var login = viewModel.fetch(txtUsername.text.toString(), txtPassword.text.toString())
             Toast.makeText(view.context, "Checking Data", Toast.LENGTH_LONG).show()
-            val observableNotification = io.reactivex.rxjava3.core.Observable.timer(5, TimeUnit.SECONDS)
+            val observableNotification = io.reactivex.rxjava3.core.Observable.timer(3, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     login = viewModel.fetch(txtUsername.text.toString(), txtPassword.text.toString())
-                    Log.e("login check", login.toString())
+                    //Log.e("login check", login.toString())
                     if(login != null){
                         var intent = Intent(activity, MainActivity::class.java)
-                        var sharedFile = "id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078"
-                        var shared = this.requireActivity()
-                            .getSharedPreferences(sharedFile, Context.MODE_PRIVATE)
-                        var editor: SharedPreferences.Editor = shared.edit();
-                        editor.putInt("userID", login);
-                        editor.apply();
+                        editor.putInt("userID", login)
+                        editor.apply()
+                        Log.wtf("Loggin in user", login.toString())
                         startActivity(intent)
                     }
                     else{
                         Toast.makeText(view.context, "Incorrect username or password", Toast.LENGTH_LONG).show()
                     }
                 }
-
-            val observable = io.reactivex.rxjava3.core.Observable.just("a stream of data", "hellow", "world")
-
-            val observer = object : Observer<String> {
-                override fun onSubscribe(d: Disposable) {
-                    Log.wtf("Messages", "begin subscribe")
-                }
-
-                override fun onNext(t: String) {
-                    Log.wtf("Messages", "data: $t")
-                }
-
-                override fun onError(e: Throwable) {
-                    Log.wtf("Messages", "error: ${e!!.message.toString()}")
-                }
-
-                override fun onComplete() {
-                    Log.wtf("Messages", "complete")
-                }
-
-            }
-
-            observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer)
-
         }
+
     }
+    fun onBackPressed() {
+
+    }
+
 }

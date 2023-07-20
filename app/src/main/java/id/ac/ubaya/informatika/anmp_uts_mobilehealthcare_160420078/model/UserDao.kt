@@ -16,9 +16,12 @@ interface UserDao {
     @Query("SELECT id FROM user WHERE username = :username and password = :password")
     fun selectUserID(username: String, password: String): Int
 
+    @Query("select * from user where id = :id")
+    fun selectLoggedInUser(id: Int): User
+
     @Delete
     fun deleteUser(user: User)
 
-    @Query("update user set username=:username, first_name=:firstName, last_name=:lastName, password=:password where id=:id")
+    @Query("update user set username=:username, first_name=:firstName, last_name=:lastName, password= :password where id=:id")
     fun update(username: String, firstName: String, lastName: String, password: String, id: Int)
 }

@@ -61,9 +61,4 @@ class ArticleListViewModel(application: Application):AndroidViewModel(applicatio
     }
     */
 
-    fun clearTaskArticle(article: Article){
-        launch {
-            var db = buildArticleDB(getApplication())
-        }
-    }
 }

@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.User
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.util.buildDB
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.util.buildDoctorDB
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -44,6 +45,13 @@ class UserViewModel(application: Application): AndroidViewModel(application), Co
             Log.e("usercheckfalse", check.toString())
         }
         return check
+    }
+
+    fun fetchLoggedUser(id: Int){
+        launch {
+            var db = buildDB(getApplication())
+            userLD.postValue(db.userDao().selectLoggedInUser(id))
+        }
     }
 
     fun update(username: String, firstName: String, lastName: String, password: String, id: Int){

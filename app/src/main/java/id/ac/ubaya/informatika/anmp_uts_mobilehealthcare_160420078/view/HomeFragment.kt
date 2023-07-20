@@ -1,14 +1,21 @@
 package id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.R
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.databinding.FragmentDoctorsDetailBinding
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.databinding.FragmentHomeBinding
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.Article
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.viewmodel.ArticleListViewModel
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.viewmodel.DoctorListViewModel
@@ -18,19 +25,17 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(), ButtonDetailLayoutInterface {
     private lateinit var viewModel: ArticleListViewModel
-    private var articleListAdapter = ArticleListAdapter(arrayListOf(), { item -> viewModel.clearTaskArticle(item) })
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private var articleListAdapter = ArticleListAdapter(arrayListOf())
+    private lateinit var dataBinding: FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        dataBinding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater,
+            R.layout.fragment_home, container, false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,6 +51,27 @@ class HomeFragment : Fragment(), ButtonDetailLayoutInterface {
             viewModel.refreshArticle()
             refreshLayout.isRefreshing = false
         }
+
+        var sharedFile = "id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078"
+        var shared = this.requireActivity()
+            .getSharedPreferences(sharedFile, Context.MODE_PRIVATE)
+        var editor: SharedPreferences.Editor = shared.edit();
+
+
+
+
+        fabLogout.setOnClickListener {
+            editor.putInt("userID", 0) //remove current user
+            editor.apply()
+            var intent = Intent(activity, SignInActivity::class.java)
+            startActivity(intent)
+        }
+
+        fabProfile.setOnClickListener{
+            val action = HomeFragmentDirections.actionProfile()
+            Navigation.findNavController(it).navigate(action)
+        }
+
         observeViewModel()
         /*
         var article1 = Article("Regular Exercise: Key for Heart Health", "Regular exercise is essential for a healthy heart. It strengthens the heart, improves blood circulation, and reduces the risk of cardiovascular diseases. Studies consistently show that individuals who exercise regularly have a lower likelihood of developing heart disease, high blood pressure, and obesity. Incorporating activities like walking, running, swimming, or cycling into daily routines significantly benefits the cardiovascular system. Exercise also contributes to overall well-being by managing stress, improving mood, boosting energy levels, and promoting better sleep. Aim for at least 150 minutes of moderate-intensity exercise or 75 minutes of vigorous exercise per week for optimal heart health.", "https://blog.1life.co.uk/hubfs/Why%20You%20Should%20Have%20a%20Regular%20Exercise%20Routine.jpg")

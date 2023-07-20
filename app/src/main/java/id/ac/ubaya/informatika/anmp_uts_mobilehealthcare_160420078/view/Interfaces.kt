@@ -24,6 +24,11 @@ interface ButtonDetailLayoutInterface{
         val action = PharmacyListFragmentDirections.actionPharmacyDetail(v.tag.toString())
         Navigation.findNavController(v).navigate(action)
     }
+
+    fun onCancelProfileClick(v:View){
+        Navigation.findNavController(v).popBackStack()
+    }
+
 }
 
 interface ButtonAppointmentLayoutInterface{
