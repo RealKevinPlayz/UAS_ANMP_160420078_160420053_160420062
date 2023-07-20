@@ -44,3 +44,10 @@ interface TimeListener{
 interface AppointmentLayoutInterface{
     fun onButtonBooking(v: View)
 }
+
+interface ServiceFacilityLayoutInterface{
+    fun onButtonService(v: View){
+        var action = HospitalDetailFragmentDirections.actionFacilityService()
+        Navigation.findNavController(v).navigate(action)
+    }
+}

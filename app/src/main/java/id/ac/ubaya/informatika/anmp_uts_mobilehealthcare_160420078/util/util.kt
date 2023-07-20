@@ -37,6 +37,9 @@ var DB_SCHEDULE = "scheduledb"
 var DB_MEDICINE = "medicinedb"
 var DB_PHARMACY = "pharmacydb"
 var DB_HOSPITAL = "hospitaldb"
+var DB_FACILITY = "facilitydb"
+var DB_SERVICE = "servicedb"
+
 fun buildDB(context: Context):UserDatabase{
     var db = Room.databaseBuilder(context, UserDatabase::class.java, DB_NAME).build()
     return db
@@ -66,6 +69,15 @@ fun buildHospitalDB(context: Context): HospitalsDatabase {
     var hospitalDb = Room.databaseBuilder(context, HospitalsDatabase::class.java, DB_HOSPITAL).build()
     return hospitalDb
 }
+fun buildFacilityDB(context: Context): FacilityDatabase {
+    var facilityDb = Room.databaseBuilder(context, FacilityDatabase::class.java, DB_FACILITY).build()
+    return facilityDb
+}
+fun buildServiceDB(context: Context): ServiceDatabase {
+    var serviceDb = Room.databaseBuilder(context, ServiceDatabase::class.java, DB_SERVICE).build()
+    return serviceDb
+}
+
 @BindingAdapter("android:imageUrl", "android:progressBar")
 fun loadPhotoURL(view:ImageView, url:String, pb:ProgressBar){
     view.loadImage(url, pb)

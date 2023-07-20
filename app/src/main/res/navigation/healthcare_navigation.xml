@@ -43,6 +43,9 @@
         <argument
             android:name="id"
             app:argType="string" />
+        <action
+            android:id="@+id/actionFacilityService"
+            app:destination="@id/facilityServiceFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemMedicine"
@@ -91,4 +94,9 @@
         android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.ScheduleListFragment"
         android:label="Your Appointment List"
         tools:layout="@layout/fragment_schedule_list" />
+    <fragment
+        android:id="@+id/facilityServiceFragment"
+        android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.FacilityServiceFragment"
+        android:label="fragment_facility_service"
+        tools:layout="@layout/fragment_facility_service" />
 </navigation>

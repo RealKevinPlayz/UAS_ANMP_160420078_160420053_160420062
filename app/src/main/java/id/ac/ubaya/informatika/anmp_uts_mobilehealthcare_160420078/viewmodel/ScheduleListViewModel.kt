@@ -27,8 +27,6 @@ class ScheduleListViewModel(application: Application): AndroidViewModel(applicat
         }
     }
     fun refreshSchedule(user_id: Int) {
-        Log.wtf("Refreshing the Schedule", "success")
-        Log.wtf("User Id on Schedule", user_id.toString())
         loadingLD.value = true
         scheduleLoadErrorLD.value = false
         launch {

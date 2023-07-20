@@ -7,6 +7,9 @@
         <variable
             name="hospital"
             type="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.Hospital" />
+        <variable
+            name="facilityservicelistener"
+            type="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.ServiceFacilityLayoutInterface" />
     </data>
 
     <FrameLayout
@@ -98,6 +101,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:src="@drawable/rating" />
+
+            <Button
+                android:id="@+id/btnFacilityService"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="36dp"
+                android:text="Facility and Service"
+                android:onClick="@{facilityservicelistener::onButtonService}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>

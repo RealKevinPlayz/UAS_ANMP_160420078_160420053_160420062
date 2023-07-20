@@ -1,5 +1,7 @@
 package id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,17 +17,10 @@ import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.databinding.F
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.viewmodel.HospitalDetailViewModel
 import kotlinx.android.synthetic.main.fragment_hospital_detail.*
 
-class HospitalDetailFragment : Fragment() {
+class HospitalDetailFragment : Fragment(), ServiceFacilityLayoutInterface {
     private lateinit var viewModel: HospitalDetailViewModel
     private lateinit var dataBinding: FragmentHospitalDetailBinding
     var hospitalId = ""
-    var hospitalName = ""
-    var hospitalWebsite = ""
-    var hospitalAddress = ""
-    var hospitalPhone = ""
-    var hospitalPhotoUrl = ""
-    var hospitalRating = ""
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +43,13 @@ class HospitalDetailFragment : Fragment() {
 //            hospitalPhone = HospitalDetailFragmentArgs.fromBundle(requireArguments()).hospitalPhone
 //            hospitalPhotoUrl = HospitalDetailFragmentArgs.fromBundle(requireArguments()).hospitalPhotoUrl
 //            hospitalRating = HospitalDetailFragmentArgs.fromBundle(requireArguments()).hospitalRating
+            dataBinding.facilityservicelistener = this
+            var sharedFile = "id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078"
+            var shared = this.requireActivity()
+                .getSharedPreferences(sharedFile, Context.MODE_PRIVATE)
+            var editor: SharedPreferences.Editor = shared.edit();
+            editor.putInt("hospitalID", hospitalId.toInt());
+            editor.apply();
         }
         viewModel = ViewModelProvider(this).get(HospitalDetailViewModel::class.java)
         viewModel.fetch(hospitalId.toInt())
