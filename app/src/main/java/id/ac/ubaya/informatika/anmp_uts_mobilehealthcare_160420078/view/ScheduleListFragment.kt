@@ -2,6 +2,7 @@ package id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -28,7 +29,6 @@ class ScheduleListFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_schedule_list, container, false)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var sharedFile = "id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078"
@@ -41,6 +41,7 @@ class ScheduleListFragment : Fragment() {
         scheduleRecView.adapter = scheduleListAdapter
 
         refreshLayout.setOnRefreshListener {
+            Log.wtf("Refresh Schedule", "success")
             scheduleRecView.visibility = View.GONE
             txtScheduleListError.visibility = View.GONE
             scheduleListProgressLoad.visibility = View.VISIBLE
@@ -52,6 +53,7 @@ class ScheduleListFragment : Fragment() {
 
     fun observeViewModel(){
         viewModel.scheduleLD.observe(viewLifecycleOwner, Observer {
+            scheduleListAdapter.updateScheduleList(it)
             if (it.isEmpty()){
                 txtScheduleListError?.visibility = View.VISIBLE
                 scheduleListProgressLoad?.visibility = View.VISIBLE

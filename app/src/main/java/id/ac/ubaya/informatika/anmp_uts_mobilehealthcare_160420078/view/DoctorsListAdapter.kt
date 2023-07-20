@@ -1,5 +1,6 @@
 package id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +29,7 @@ ButtonDetailLayoutInterface{
     override fun onBindViewHolder(holder: DoctorViewHolder, position: Int) {
         holder.view.doctor = doctorList[position]
         holder.view.btnListener = this
+        Log.wtf("Doctor Data Name", doctorList[position].doctorName.toString())
         //var imageView = holder.view.findViewById<ImageView>(R.id.doctorCardImage)
         //var progressBar = holder.view.findViewById<ProgressBar>(R.id.doctorCardProgressBar)
         //imageView.loadImage(doctorList[position].doctorPhotoUrl, progressBar)

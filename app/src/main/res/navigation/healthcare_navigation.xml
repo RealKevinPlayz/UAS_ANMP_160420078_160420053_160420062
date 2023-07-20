@@ -84,11 +84,11 @@
     <fragment
         android:id="@+id/appointmentFragment"
         android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.AppointmentFragment"
-        android:label="fragment_appointment"
+        android:label="Doctor Appointment"
         tools:layout="@layout/fragment_appointment" />
     <fragment
         android:id="@+id/scheduleListFragment"
         android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.ScheduleListFragment"
-        android:label="fragment_schedule_list"
+        android:label="Your Appointment List"
         tools:layout="@layout/fragment_schedule_list" />
 </navigation>

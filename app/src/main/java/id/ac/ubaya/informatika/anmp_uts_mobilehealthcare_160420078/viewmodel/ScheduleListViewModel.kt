@@ -1,6 +1,7 @@
 package id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.Schedule
@@ -26,6 +27,8 @@ class ScheduleListViewModel(application: Application): AndroidViewModel(applicat
         }
     }
     fun refreshSchedule(user_id: Int) {
+        Log.wtf("Refreshing the Schedule", "success")
+        Log.wtf("User Id on Schedule", user_id.toString())
         loadingLD.value = true
         scheduleLoadErrorLD.value = false
         launch {

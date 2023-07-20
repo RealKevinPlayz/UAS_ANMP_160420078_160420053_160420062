@@ -16,7 +16,6 @@ import kotlinx.android.synthetic.main.fragment_hospital_list.*
 import kotlinx.android.synthetic.main.fragment_hospital_list.refreshLayout
 
 class HospitalListFragment : Fragment() {
-
     private lateinit var viewModel: HospitalListViewModel
     private val hospitalListAdapter = HospitalListAdapter(arrayListOf(), { item -> viewModel.clearTaskHospital(item) })
 
