@@ -13,6 +13,9 @@
         <action
             android:id="@+id/actionDoctorDetail"
             app:destination="@id/doctorsDetailFragment" />
+        <action
+            android:id="@+id/actionScheduleList"
+            app:destination="@id/scheduleListFragment" />
     </fragment>
     <fragment
         android:id="@+id/doctorsDetailFragment"
@@ -83,4 +86,9 @@
         android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.AppointmentFragment"
         android:label="fragment_appointment"
         tools:layout="@layout/fragment_appointment" />
+    <fragment
+        android:id="@+id/scheduleListFragment"
+        android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.ScheduleListFragment"
+        android:label="fragment_schedule_list"
+        tools:layout="@layout/fragment_schedule_list" />
 </navigation>

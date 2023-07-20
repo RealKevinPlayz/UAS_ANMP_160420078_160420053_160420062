@@ -7,19 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.R
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.Doctor
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.viewmodel.DoctorListViewModel
 import kotlinx.android.synthetic.main.fragment_doctors_list.*
+import kotlinx.android.synthetic.main.fragment_doctors_list.refreshLayout
 
 class DoctorsListFragment : Fragment() {
     private lateinit var viewModel: DoctorListViewModel
-    private val doctorListAdapter = DoctorListAdapter(arrayListOf(), { item -> viewModel.clearTaskDoctor(item) })
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private val doctorListAdapter = DoctorsListAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +40,12 @@ class DoctorsListFragment : Fragment() {
             viewModel.refreshDoctor()
             refreshLayout.isRefreshing = false
         }
+
+        fabSchedule.setOnClickListener {
+            var action = DoctorsListFragmentDirections.actionScheduleList()
+            Navigation.findNavController(it).navigate(action)
+        }
+
         observeViewModel()
         /*
         var doctor1 = Doctor("dr. Prettysun Ang Mellow, Sp.PD", "Dokter Penyakit Dalam", "Rumah Sakit Mitra Keluarga Kenjeran, Jl. Kenjeran No.506, Kalijudan, Mulyorejo, Kota Surabaya, Jawa Timur 60134, Indonesia", "3724-0951-8135", "https://res.cloudinary.com/dk0z4ums3/image/upload/w_100,h_100,c_thumb,dpr_2.0/v1552352865/image_doctor/prettysun.jpg.jpg", "5")

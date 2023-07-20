@@ -14,7 +14,7 @@ import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.Doctor
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.util.loadImage
 import kotlinx.android.synthetic.main.doctors_list_item.view.*
 
-class DoctorListAdapter(var doctorList:ArrayList<Doctor>, var adapterOnClick : (Doctor) -> Unit) : RecyclerView.Adapter<DoctorListAdapter.DoctorViewHolder>(),
+class DoctorsListAdapter(var doctorList:ArrayList<Doctor>) : RecyclerView.Adapter<DoctorsListAdapter.DoctorViewHolder>(),
 ButtonDetailLayoutInterface{
     class DoctorViewHolder (var view: DoctorsListItemBinding) : RecyclerView.ViewHolder(view.root)
 

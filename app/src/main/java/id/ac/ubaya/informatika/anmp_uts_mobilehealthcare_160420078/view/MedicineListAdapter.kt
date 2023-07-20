@@ -17,7 +17,7 @@ import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.util.loadImag
 
 import kotlinx.android.synthetic.main.medicine_list_item.view.*
 
-class MedicineListAdapter(var medicineList:ArrayList<Medicine>, var adapterOnClick : (Medicine) -> Unit) : RecyclerView.Adapter<MedicineListAdapter.MedicineViewHolder>(),
+class MedicineListAdapter(var medicineList:ArrayList<Medicine>) : RecyclerView.Adapter<MedicineListAdapter.MedicineViewHolder>(),
 ButtonDetailLayoutInterface{
     class MedicineViewHolder (var view: MedicineListItemBinding) : RecyclerView.ViewHolder(view.root)
 

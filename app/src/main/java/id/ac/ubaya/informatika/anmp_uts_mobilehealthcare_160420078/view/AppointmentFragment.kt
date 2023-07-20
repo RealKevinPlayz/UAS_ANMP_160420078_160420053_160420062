@@ -59,7 +59,7 @@ class AppointmentFragment : Fragment(), AppointmentLayoutInterface, DateListener
         doctorName = shared.getString("doctorName", "").toString()
         txtDoctorID.text = "Doctor ID : " + doctorID
         txtDoctorName.text = "Doctor Name : " + doctorName
-        dataBinding.schedule = Schedule(userID, doctorID, 0, "")
+        dataBinding.schedule = Schedule(userID, doctorID, doctorName, 0, "")
         dataBinding.bookinglistener = this
         dataBinding.datelistener = this
         dataBinding.timelistener = this

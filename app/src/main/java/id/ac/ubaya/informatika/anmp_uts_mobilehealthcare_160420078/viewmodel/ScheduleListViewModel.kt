@@ -25,18 +25,13 @@ class ScheduleListViewModel(application: Application): AndroidViewModel(applicat
             db.scheduleDao().insertAll(schedule)
         }
     }
-    fun refreshSchedule() {
+    fun refreshSchedule(user_id: Int) {
         loadingLD.value = true
         scheduleLoadErrorLD.value = false
         launch {
             var db = buildScheduleDB(getApplication())
-            scheduleLD.postValue(db.scheduleDao().selectAllSchedule())
+            scheduleLD.postValue(db.scheduleDao().selectAllSchedule(user_id))
         }
     }
 
-    fun clearTaskSchedule(schedule: Schedule){
-        launch {
-            var db = buildScheduleDB(getApplication())
-        }
-    }
 }

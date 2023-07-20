@@ -10,6 +10,6 @@ interface ScheduleDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg schedule: Schedule)
 
-    @Query("SELECT * FROM schedule")
-    fun selectAllSchedule(): List<Schedule>
+    @Query("SELECT * FROM schedule WHERE user_id = :user_id")
+    fun selectAllSchedule(user_id: Int): List<Schedule>
 }

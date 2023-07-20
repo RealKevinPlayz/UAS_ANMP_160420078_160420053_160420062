@@ -82,9 +82,4 @@ class MedicineListViewModel(application: Application): AndroidViewModel(applicat
         */
     }
 
-    fun clearTaskMedicine(medicine: Medicine){
-        launch {
-            var db = buildMedicineDB(getApplication())
-        }
-    }
 }

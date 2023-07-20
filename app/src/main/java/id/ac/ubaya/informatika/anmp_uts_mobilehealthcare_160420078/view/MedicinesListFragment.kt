@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_medicines_list.*
 
 class MedicinesListFragment : Fragment() {
     private lateinit var viewModel: MedicineListViewModel
-    private val medicineListAdapter = MedicineListAdapter(arrayListOf(), { item -> viewModel.clearTaskMedicine(item) })
+    private val medicineListAdapter = MedicineListAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -16,8 +16,7 @@ abstract class ScheduleDatabase: RoomDatabase() {
             Room.databaseBuilder(
                 context.applicationContext,
                 ScheduleDatabase::class.java,
-                DB_SCHEDULE
-            ).build()
+                DB_SCHEDULE).build()
         operator fun invoke(context: Context) {
             if(instance!=null) {
                 synchronized(LOCK) {

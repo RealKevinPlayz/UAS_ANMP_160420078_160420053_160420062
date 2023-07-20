@@ -10,6 +10,8 @@ data class Schedule(
     var user_id: Int,
     @ColumnInfo(name = "doctor_id")
     var doctor_id: Int,
+    @ColumnInfo(name = "doctor_name")
+    var doctor_name: String,
     @ColumnInfo(name = "date")
     var date: Int,
     @ColumnInfo(name = "description")

@@ -46,6 +46,18 @@
                 app:layout_constraintEnd_toEndOf="@+id/doctorsRecView"
                 app:layout_constraintStart_toStartOf="@+id/doctorsRecView"
                 app:layout_constraintTop_toTopOf="@+id/doctorsRecView" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabSchedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="28dp"
+                android:layout_marginBottom="24dp"
+                android:clickable="true"
+                android:src="@drawable/ic_baseline_history_24"
+                app:layout_constraintBottom_toBottomOf="@+id/doctorsRecView"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="SpeakableTextPresentCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
