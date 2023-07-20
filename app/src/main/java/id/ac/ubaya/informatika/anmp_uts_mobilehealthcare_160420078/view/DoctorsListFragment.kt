@@ -61,7 +61,7 @@ class DoctorsListFragment : Fragment() {
         */
     }
 
-    private fun observeViewModel() {
+    fun observeViewModel() {
         viewModel.doctorLD.observe(viewLifecycleOwner, Observer {
             doctorListAdapter.updateDoctorList(it)
             if (it.isEmpty()){

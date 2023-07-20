@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.databinding.ScheduleListItemBinding
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.Hospital
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.model.Schedule
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ScheduleListAdapter(var scheduleList:ArrayList<Schedule>) : RecyclerView.Adapter<ScheduleListAdapter.ScheduleViewHolder>() {
     class ScheduleViewHolder(var view: ScheduleListItemBinding) : RecyclerView.ViewHolder(view.root)
@@ -19,32 +22,21 @@ class ScheduleListAdapter(var scheduleList:ArrayList<Schedule>) : RecyclerView.A
 
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
         holder.view.schedule = scheduleList[position]
-        var year = 0
-        var month = 0
-        var day = 0
-
-        var hour = 0
-        var minutes = 0
 
         var date = ""
         var time = ""
 
-        year = (scheduleList[position].date / 31556926)
-        month = (scheduleList[position].date-(year * 31556926))/2629743
-        day = (scheduleList[position].date-(month * 2629743)-(year * 31556926))/86400
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy")
+        val dateLong = Date(scheduleList[position].date.toLong() * 1000)
 
-        hour = (scheduleList[position].date-(day * 86400)-(month * 2629743)-(year * 31556926))/3600
-        minutes = (scheduleList[position].date-(hour * 3600)-(day * 86400)-(month * 2629743)-(year * 31556926))/60
+        val timeFormat = SimpleDateFormat("hh:mm")
+        val timeLong = Date(scheduleList[position].date.toLong() * 1000)
 
-        year += 1970
-        date = "$year - $month - $day."
-
-        time = "$hour : $minutes"
+        date = dateFormat.format(dateLong).toString()
+        time = timeFormat.format(timeLong).toString()
 
         holder.view.scheduleDate.text = date
         holder.view.scheduleTime.text = time
-        Log.wtf("Schedule Data id", scheduleList[position].id.toString())
-        Log.wtf("Schedule Data doctor name", scheduleList[position].doctor_name.toString())
     }
 
     fun updateScheduleList(newScheduleList: List<Schedule>) {
