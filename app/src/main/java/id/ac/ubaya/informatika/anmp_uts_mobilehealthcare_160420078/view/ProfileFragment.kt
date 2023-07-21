@@ -29,7 +29,7 @@ import kotlinx.android.synthetic.main.fragment_medicines_detail.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import java.util.concurrent.TimeUnit
 
-class ProfileFragment : Fragment(){
+class ProfileFragment : Fragment(), ButtonDetailLayoutInterface{
         private lateinit var viewModel: UserViewModel
         private lateinit var dataBinding: FragmentProfileBinding
         var userId = 0
@@ -54,6 +54,7 @@ class ProfileFragment : Fragment(){
             userId = shared.getInt("userID", 0)
 
             viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+            dataBinding.btnListener = this
             viewModel.fetchLoggedUser(userId.toInt())
             observeViewModel()
 
