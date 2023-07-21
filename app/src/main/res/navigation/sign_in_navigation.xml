@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/signInFragment"
         android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.SignInFragment"
-        android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_in" >
+        android:label="Sign In"
+        tools:layout="@layout/fragment_sign_in">
         <action
             android:id="@+id/signInToSignUp"
             app:destination="@id/signUpFragment" />
@@ -17,8 +17,8 @@
     <fragment
         android:id="@+id/signUpFragment"
         android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.SignUpFragment"
-        android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" >
+        android:label="Sign Up"
+        tools:layout="@layout/fragment_sign_up">
         <action
             android:id="@+id/signUpToSignIn"
             app:destination="@id/signInFragment" />

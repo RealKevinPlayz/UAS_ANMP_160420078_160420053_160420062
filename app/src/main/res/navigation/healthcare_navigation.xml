@@ -74,7 +74,7 @@
     <fragment
         android:id="@+id/pharmacyDetailFragment"
         android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.PharmacyDetailFragment"
-        android:label="PharmacyDetailFragment" >
+        android:label="Detail Apotek">
         <argument
             android:name="id"
             app:argType="string" />
@@ -91,20 +91,20 @@
     <fragment
         android:id="@+id/appointmentFragment"
         android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.AppointmentFragment"
-        android:label="Doctor Appointment"
+        android:label="Appointment Dokter"
         tools:layout="@layout/fragment_appointment" />
     <fragment
         android:id="@+id/scheduleListFragment"
         android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.ScheduleListFragment"
-        android:label="Your Appointment List"
+        android:label="Daftar Appointment Dokter"
         tools:layout="@layout/fragment_schedule_list" />
     <fragment
         android:id="@+id/facilityServiceFragment"
         android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.FacilityServiceFragment"
-        android:label="fragment_facility_service"
+        android:label="Fasilitas dan Layanan"
         tools:layout="@layout/fragment_facility_service" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view.ProfileFragment"
-        android:label="Your Profile"/>
+        android:label="Profil Dirimu" />
 </navigation>
