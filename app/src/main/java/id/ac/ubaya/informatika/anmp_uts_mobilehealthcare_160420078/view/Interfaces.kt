@@ -52,9 +52,8 @@ interface ButtonSignInLayoutInterface{
         val action = SignInFragmentDirections.signInToSignUp()
         Navigation.findNavController(v).navigate(action)
     }
-
+    //fun onSignIn(v: View)
 }
-
 
 interface DateListener{
     fun onDateClick(v: View)

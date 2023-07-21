@@ -30,21 +30,23 @@ import java.util.concurrent.TimeUnit
 class SignInFragment : Fragment(), ButtonSignInLayoutInterface {
     private lateinit var viewModel: UserViewModel
     private lateinit var dataBinding: FragmentSignInBinding
+    var login = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_in, container, false)
-//        dataBinding = DataBindingUtil.inflate<FragmentSignInBinding>(inflater,
-//            R.layout.fragment_sign_in, container, false)
-//        return dataBinding.root
+  //      return inflater.inflate(R.layout.fragment_sign_in, container, false)
+        dataBinding = DataBindingUtil.inflate<FragmentSignInBinding>(inflater,
+          R.layout.fragment_sign_in, container, false)
+      return dataBinding.root
     }
     //tes
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        dataBinding.btnListener = this
         var sharedFile = "id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078"
         var shared = this.requireActivity()
             .getSharedPreferences(sharedFile, Context.MODE_PRIVATE)
@@ -58,15 +60,17 @@ class SignInFragment : Fragment(), ButtonSignInLayoutInterface {
             editor.apply()
             startActivity(intent)
         }
-
+        /*
         buttonRegister.setOnClickListener {
             val action = SignInFragmentDirections.signInToSignUp()
             Navigation.findNavController(it).navigate(action)
         }
+
+         */
         buttonSignIn.setOnClickListener {
             var txtUsername = view.findViewById<EditText>(R.id.txtUsername)
             var txtPassword = view.findViewById<EditText>(R.id.txtPassword)
-            var login = viewModel.fetch(txtUsername.text.toString(), txtPassword.text.toString())
+            login = viewModel.fetch(txtUsername.text.toString(), txtPassword.text.toString())
             Toast.makeText(view.context, "Checking Data", Toast.LENGTH_LONG).show()
             val observableNotification = io.reactivex.rxjava3.core.Observable.timer(3, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
@@ -74,7 +78,7 @@ class SignInFragment : Fragment(), ButtonSignInLayoutInterface {
                 .subscribe {
                     login = viewModel.fetch(txtUsername.text.toString(), txtPassword.text.toString())
                     //Log.e("login check", login.toString())
-                    if(login != null){
+                    if(login != 0){
                         var intent = Intent(activity, MainActivity::class.java)
                         editor.putInt("userID", login)
                         editor.apply()
@@ -91,5 +95,9 @@ class SignInFragment : Fragment(), ButtonSignInLayoutInterface {
     fun onBackPressed() {
 
     }
+    /*
+    override fun onSignIn(v: View) {
 
+    }
+    */
 }
