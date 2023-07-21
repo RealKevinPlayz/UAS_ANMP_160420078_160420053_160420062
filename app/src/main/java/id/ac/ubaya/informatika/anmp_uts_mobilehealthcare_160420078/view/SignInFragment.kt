@@ -13,9 +13,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.R
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.databinding.FragmentDoctorsDetailBinding
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.databinding.FragmentSignInBinding
 import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.viewmodel.UserViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observer
@@ -24,8 +27,9 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_sign_in.*
 import java.util.concurrent.TimeUnit
 
-class SignInFragment : Fragment() {
+class SignInFragment : Fragment(), ButtonSignInLayoutInterface {
     private lateinit var viewModel: UserViewModel
+    private lateinit var dataBinding: FragmentSignInBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +37,9 @@ class SignInFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_sign_in, container, false)
+//        dataBinding = DataBindingUtil.inflate<FragmentSignInBinding>(inflater,
+//            R.layout.fragment_sign_in, container, false)
+//        return dataBinding.root
     }
     //tes
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

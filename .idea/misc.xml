@@ -5,6 +5,14 @@
       <map>
         <entry key="..\:/NMP/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/layout/activity_sign_in.xml" value="0.21666666666666667" />
         <entry key="..\:/NMP/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/layout/fragment_sign_in.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/drawable/ic_baseline_access_time_24.xml" value="0.1505" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/drawable/ic_baseline_doctor.xml" value="0.1505" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/drawable/ic_baseline_error_24.xml" value="0.1505" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1505" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/drawable/ic_baseline_local_pharmacy_24.xml" value="0.1505" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/layout/activity_main.xml" value="0.14175724637681159" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/layout/activity_sign_in.xml" value="0.12635869565217392" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/layout/doctors_list_item.xml" value="0.12635869565217392" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/drawable/ic_baseline_doctor.xml" value="0.188" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/layout/activity_sign_in.xml" value="0.1796875" />
@@ -27,7 +35,7 @@
         <entry key="..\:/Users/Asus/AndroidStudioProjects/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/layout/medicine_list_item.xml" value="0.19293478260869565" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/layout/pharmacy_list_item.xml" value="0.19293478260869565" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/layout/schedule_list_item.xml" value="0.5" />
-        <entry key="..\:/Users/Asus/AndroidStudioProjects/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/layout/service_list_item.xml" value="0.22" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/layout/service_list_item.xml" value="0.67" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/UAS_ANMP_160420078_160420053_160420062/app/src/main/res/menu/bottom_menu.xml" value="0.20416666666666666" />
       </map>
     </option>

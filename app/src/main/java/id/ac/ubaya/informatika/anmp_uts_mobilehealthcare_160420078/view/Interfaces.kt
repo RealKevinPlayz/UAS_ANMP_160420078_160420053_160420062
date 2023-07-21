@@ -1,8 +1,17 @@
 package id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.view
 
+import android.content.Intent
+import android.util.Log
 import android.view.View
 import android.widget.CompoundButton
+import android.widget.EditText
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import id.ac.ubaya.informatika.anmp_uts_mobilehealthcare_160420078.R
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 
 interface ButtonDetailLayoutInterface{
     fun onDoctorButtonDetailClick(v:View){
@@ -37,6 +46,15 @@ interface ButtonAppointmentLayoutInterface{
         Navigation.findNavController(v).navigate(action)
     }
 }
+
+interface ButtonSignInLayoutInterface{
+    fun onButtonRegister(v: View){
+        val action = SignInFragmentDirections.signInToSignUp()
+        Navigation.findNavController(v).navigate(action)
+    }
+
+}
+
 
 interface DateListener{
     fun onDateClick(v: View)
