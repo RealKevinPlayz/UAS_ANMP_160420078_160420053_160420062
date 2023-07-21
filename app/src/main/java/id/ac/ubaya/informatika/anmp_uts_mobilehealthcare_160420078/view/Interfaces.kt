@@ -55,6 +55,12 @@ interface ButtonSignInLayoutInterface{
     //fun onSignIn(v: View)
 }
 
+interface ButtonSignUpLayoutInterface{
+    fun onButtonBack(v: View){
+        Navigation.findNavController(v).popBackStack()
+    }
+}
+
 interface DateListener{
     fun onDateClick(v: View)
 }
